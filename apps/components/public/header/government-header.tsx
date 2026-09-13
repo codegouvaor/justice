@@ -40,34 +40,36 @@ function collectChildHrefs(section: NavigationSection): string[] {
 }
 
 /**
- * Government Header of the Ministry of Infrastructure and Digital Affairs of
- * the Republic of Astoria.
+ * Government Header of the Ministry of Justice of the Republic of Astoria.
  *
  * Main navigation — the permanent information architecture of the portal,
  * organised around the institutional perimeter of the ministry rather than
  * generic website categories:
  *
- *   Infrastructures  → Construire : normes, réseaux, patrimoine, grands projets
- *   Logement         → Loger      : habitat, construction, rénovation, logement public
- *   Énergie          → Alimenter  : électricité, réseaux, production, transition
- *   Mobilité         → Relier     : routier, ferroviaire, transports, aérien & maritime
- *   Numérique        → Numériser  : connectivité, infrastructures, services publics, données
- *   Territoires      → Aménager   : aménagement, eau, environnement, résilience
- *   Le Ministère     → Incarner   : missions, administration, politiques, international
+ *   Justice              → comprendre : l'organisation, la politique judiciaire, l'accès à la justice, les droits
+ *   Droit                → consulter : les textes, les codes, la jurisprudence, la recherche juridique
+ *   Juridictions         → trouver   : l'ordre judiciaire, les tribunaux, les juridictions spécialisées, les audiences
+ *   Procédures           → agir      : les procédures civiles, pénales, administratives, les démarches
+ *   Professionnels       → exercer   : la magistrature, les auxiliaires de justice, les carrières, la formation
+ *   Données & ressources → connaître : les décisions, les statistiques, les publications, les données ouvertes
+ *   Le Ministère         → incarner  : l'institution, l'administration, la transparence, les actualités
  *
  * Each entry opens an institutional mega-menu (leader band with the entry
- * description and its main action, plus four theme columns of four links).
+ * description and its main action, plus four section columns of four links).
  *
  * The whole navigation is configuration-driven (`primaryNavigation` in
  * `@/lib/site-structure`): the seven entries open the panels, and nothing else
- * competes with them in the header. The State's own infrastructure (government
- * buildings, government cloud, telecommunications…) is deliberately not one of
- * the portal's policy domains and has no dedicated entry in the header.
+ * competes with them in the header. The structure is validated at compile
+ * time and at runtime (7 thèmes × 4 sections × 4 liens), so a malformed
+ * navigation fails the build instead of shipping a broken header.
  *
  * The header behaviour (mega-menu opening on click, close on outside click and
  * `Escape`, keyboard support, mobile drawer) is provided by the ADS runtime
- * (`StartDsfrOnHydration`). When the user is authenticated the “MyGouv” link
- * is hidden and a custom account menu (`UserAccountMenu`) is rendered instead.
+ * (`StartDsfrOnHydration`): the same `primaryNavigation` data drives the
+ * desktop mega-menus and the hierarchical mobile drawer, so `site-structure.ts`
+ * is the single source of truth for both. When the user is authenticated the
+ * “MyGouv” link is hidden and a custom account menu (`UserAccountMenu`) is
+ * rendered instead.
  */
 export function GovernmentHeader() {
   const t = useTranslations();

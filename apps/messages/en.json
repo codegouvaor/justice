@@ -1,0 +1,979 @@
+{
+  "brand": {
+    "republicName": "Republic of Astoria"
+  },
+  "meta": {
+    "defaultTitle": "Ministry of Justice",
+    "suffix": "Ministry of Justice",
+    "description": "Official portal of the Ministry of Justice of the Republic of Astoria.",
+    "searchPlaceholder": "Search justice.gouv.aor"
+  },
+  "header": {
+    "homeTitle": "Home — Ministry of Justice",
+    "serviceTitle": "Ministry of Justice",
+    "serviceTagline": "The public justice service",
+    "myGouv": "Log in",
+    "accountLabel": "My account",
+    "logoutLink": "Log out",
+    "account": {
+      "profile": "My profile",
+      "settings": "My settings"
+    }
+  },
+  "common": {
+    "skipToContent": "Skip to content",
+    "skipToFooter": "Skip to footer",
+    "backToTop": {
+      "ariaLabel": "Back to top"
+    },
+    "cookiePopup": {
+      "ariaLabel": "Cookie management",
+      "title": "This portal uses cookies",
+      "message": "We use audience measurement cookies to improve the service. You can accept or refuse them.",
+      "accept": "Accept",
+      "decline": "Decline",
+      "manage": "Manage my choices"
+    }
+  },
+  "footer": {
+    "contentDescription": "The official portal of the Ministry of Justice of the Republic of Astoria: the organisation of justice, your rights and your procedures.",
+    "bottom": {
+      "contact": "Contact",
+      "planDuPortail": "Sitemap",
+      "documentsOpposables": "Binding documents",
+      "privacy": "Privacy policy",
+      "cookies": "Cookie management",
+      "publications": "Official publications"
+    },
+    "license": "Unless otherwise stated, the content of this portal is licensed under the <link>APSL Licence</link>.",
+    "columns": {
+      "justice": "Justice",
+      "droit": "Law",
+      "juridictions": "Courts",
+      "procedures": "Procedures",
+      "professionnels": "Professionals",
+      "donneesRessources": "Data & resources",
+      "leMinistere": "The Ministry"
+    }
+  },
+  "stayInTouch": {
+    "newsletter": {
+      "title": "Newsletter",
+      "desc": "Receive the news of the Ministry of Justice every month.",
+      "label": "Your email address",
+      "placeholder": "address@example.aor",
+      "submit": "Subscribe",
+      "success": "Your subscription has been registered.",
+      "hint": "By subscribing you agree to receive the ministry newsletter.",
+      "invalidEmail": "Please enter a valid email address."
+    },
+    "follow": {
+      "title": "Follow the ministry",
+      "items": {
+        "x": "Follow the ministry on X",
+        "facebook": "Follow the ministry on Facebook",
+        "linkedin": "Follow the ministry on LinkedIn",
+        "instagram": "Follow the ministry on Instagram",
+        "threads": "Follow the ministry on Threads"
+      }
+    }
+  },
+  "home": {
+    "metaTitle": "Home — Ministry of Justice",
+    "hero": {
+      "kicker": "Ministry of Justice",
+      "title": "Guaranteeing access to the law and the exercise of justice",
+      "lead": "The Ministry of Justice ensures the proper functioning of the Republic's judicial institutions and protects everyone's rights. This portal lets you consult the law, find a court, understand a procedure and access Justice services."
+    },
+    "search": {
+      "title": "Search justice.gouv.aor",
+      "label": "Search",
+      "placeholder": "The law, a court, a procedure, a decision…",
+      "popularLabel": "Frequently searched",
+      "popular": {
+        "aideJuridictionnelle": "Legal aid",
+        "porterPlainte": "File a complaint",
+        "codeCivil": "Civil Code",
+        "courDAppel": "Courts of appeal"
+      }
+    },
+    "actions": {
+      "kicker": "Quick access",
+      "title": "What would you like to do?",
+      "lead": "The most frequent actions, so you can move forward without browsing the whole portal.",
+      "items": {
+        "trouverJuridiction": {
+          "title": "Find a court",
+          "desc": "Find the competent court, its contact details and opening hours."
+        },
+        "comprendreProcedure": {
+          "title": "Understand a procedure",
+          "desc": "The steps of a civil, criminal or administrative procedure."
+        },
+        "consulterDroit": {
+          "title": "Consult the law",
+          "desc": "The Constitution, codes, laws and regulations in force."
+        },
+        "rechercherDecision": {
+          "title": "Search for a decision",
+          "desc": "Find a court decision that has been made public."
+        },
+        "aideJuridique": {
+          "title": "Get legal aid",
+          "desc": "The conditions for legal aid and how to benefit from it."
+        },
+        "porterPlainte": {
+          "title": "File a complaint",
+          "desc": "How to report an offence and the rights of victims."
+        }
+      }
+    },
+    "news": {
+      "kicker": "News",
+      "title": "Justice news",
+      "lead": "Reforms, new provisions and announcements from the ministry.",
+      "allLink": "All the news",
+      "featured": {
+        "tag": "Reform",
+        "title": "The ministry strengthens access to the law across the country",
+        "text": "New legal access sessions are being set up in courts to bring the public justice service closer to citizens.",
+        "date": "12 September 2026"
+      },
+      "secondary": {
+        "s1": {
+          "tag": "Procedure",
+          "title": "Online filing for certain applications is becoming widespread",
+          "date": "9 September 2026"
+        },
+        "s2": {
+          "tag": "Courts",
+          "title": "Hearing schedules are now published online",
+          "date": "5 September 2026"
+        },
+        "s3": {
+          "tag": "Data",
+          "title": "The annual activity report of the judicial services is published",
+          "date": "1 September 2026"
+        }
+      }
+    },
+    "droit": {
+      "kicker": "The law",
+      "title": "Understanding Astorian law",
+      "lead": "The Constitution, codes, laws and regulations of the Republic, together with the case law of the courts.",
+      "cta": "All about the law",
+      "items": {
+        "constitution": {
+          "tag": "Founding text",
+          "title": "Constitution",
+          "desc": "The supreme norm of the Republic and the principles it guarantees."
+        },
+        "codes": {
+          "tag": "Reference",
+          "title": "Codes",
+          "desc": "The codes in force: civil, criminal, procedural and others."
+        },
+        "loisReglements": {
+          "tag": "Texts",
+          "title": "Laws and regulations",
+          "desc": "Published laws, decrees and regulations and their versions in force."
+        },
+        "jurisprudence": {
+          "tag": "Decisions",
+          "title": "Case law",
+          "desc": "The major decisions of the constitutional, judicial and administrative courts."
+        }
+      }
+    },
+    "juridictions": {
+      "kicker": "Courts",
+      "title": "The courts",
+      "lead": "The Astorian court system, from the Supreme Court to the courts of first instance.",
+      "findLink": "Find a court",
+      "items": {
+        "courSupreme": {
+          "title": "Supreme Court",
+          "desc": "The highest court in the judicial order."
+        },
+        "coursDAppel": {
+          "title": "Courts of appeal",
+          "desc": "The courts of second instance and their jurisdiction."
+        },
+        "tribunaux": {
+          "title": "Courts",
+          "desc": "Civil, criminal and administrative courts of first instance."
+        },
+        "specialisees": {
+          "title": "Specialised courts",
+          "desc": "Commercial, family, employment and other specialised courts."
+        }
+      }
+    },
+    "procedures": {
+      "kicker": "Your procedures",
+      "title": "Your procedures",
+      "lead": "The main families of procedures, so you know where to start.",
+      "allLink": "See all procedures",
+      "items": {
+        "civil": {
+          "title": "Civil",
+          "desc": "Disputes, family, inheritance: proceedings before the civil courts."
+        },
+        "penal": {
+          "title": "Criminal",
+          "desc": "Complaint, investigation, criminal trial: your rights and the steps involved."
+        },
+        "administratif": {
+          "title": "Administrative",
+          "desc": "Appeals against administrative decisions and administrative litigation."
+        },
+        "demarches": {
+          "title": "Documents and applications",
+          "desc": "Submit an application, obtain a document, track a procedure."
+        }
+      }
+    },
+    "services": {
+      "kicker": "Digital services",
+      "title": "Justice digital services",
+      "lead": "Track a procedure, submit an application, consult a document: your procedures online.",
+      "items": {
+        "suivreProcedure": {
+          "title": "Track a procedure",
+          "desc": "Track the progress of a procedure concerning you."
+        },
+        "consulterFormulaire": {
+          "title": "Consult a form",
+          "desc": "Justice administrative forms online."
+        },
+        "deposerDemande": {
+          "title": "Submit an application",
+          "desc": "Submit an application to the judicial services online."
+        },
+        "obtenirDocument": {
+          "title": "Obtain a document",
+          "desc": "Request a document relating to your case."
+        }
+      },
+      "mygouv": {
+        "title": "Access my services",
+        "text": "MyGouv is the Republic's identification and personal-services access service. One single account to securely access the digital services that require identification.",
+        "cta": "Log in with MyGouv"
+      }
+    },
+    "professionnels": {
+      "kicker": "Professionals",
+      "title": "Justice professionals",
+      "lead": "Information and resources for judges, legal professionals and ministry staff.",
+      "cta": "All about professionals",
+      "items": {
+        "magistrature": {
+          "title": "Judiciary",
+          "desc": "The status, ethics and organisation of the judiciary."
+        },
+        "auxiliaires": {
+          "title": "Lawyers and legal professionals",
+          "desc": "Lawyers, court clerks, notaries, judicial experts: status and obligations."
+        },
+        "carrieres": {
+          "title": "Careers",
+          "desc": "Jobs, competitive examinations and recruitment at the ministry."
+        },
+        "formation": {
+          "title": "Training",
+          "desc": "Initial and continuing training for justice professionals."
+        }
+      }
+    },
+    "donnees": {
+      "kicker": "Data & resources",
+      "title": "Decisions, data and resources",
+      "lead": "Court decisions, judicial statistics, reports and open data from the ministry.",
+      "allLink": "Explore everything"
+    },
+    "ministry": {
+      "kicker": "The Ministry",
+      "title": "The Ministry of Justice",
+      "lead": "The ministry prepares and implements the Republic's judicial policy. Discover its missions, organisation, budget and transparency commitments."
+    }
+  },
+  "pages": {
+    "sitemap": {
+      "meta": {
+        "title": "Sitemap",
+        "description": "All the content of the Ministry of Justice portal."
+      },
+      "hero": {
+        "kicker": "Sitemap",
+        "title": "Sitemap",
+        "lead": "Browse all the sections of the Ministry of Justice portal."
+      },
+      "sections": {
+        "portail": {
+          "kicker": "Main navigation",
+          "title": "The portal",
+          "lead": "The seven main sections of the portal."
+        },
+        "transversal": {
+          "kicker": "Transversal sections",
+          "title": "Other pages",
+          "lead": "Information pages and binding documents.",
+          "links": {
+            "contact": "Contact",
+            "accessibility": "Accessibility",
+            "privacy": "Privacy policy",
+            "terms": "Terms of use",
+            "cookies": "Cookie management",
+            "publications": "Official publications",
+            "documentsOpposables": "Binding documents"
+          }
+        }
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Contact",
+        "description": "Contact the Ministry of Justice."
+      },
+      "hero": {
+        "kicker": "Contact",
+        "title": "Contact us",
+        "lead": "A question about the portal or about your rights? Write to us."
+      },
+      "formSection": {
+        "kicker": "Form",
+        "title": "Send a message",
+        "lead": "Choose a recipient and fill in the form."
+      },
+      "form": {
+        "recipientLabel": "Recipient",
+        "selectRecipient": "Select a recipient",
+        "presidency": "Presidency of the Republic",
+        "nameLabel": "Name",
+        "namePlaceholder": "Your name",
+        "emailFieldLabel": "Email address",
+        "emailPlaceholder": "your@address.aor",
+        "subjectLabel": "Subject",
+        "subjectPlaceholder": "The subject of your message",
+        "messageLabel": "Message",
+        "messagePlaceholder": "Your message",
+        "sendButton": "Send",
+        "requiredField": "This field is required.",
+        "invalidEmail": "Please enter a valid email address."
+      },
+      "channels": {
+        "kicker": "Other channels",
+        "title": "Reach us another way",
+        "lead": "The contact details of the ministry services.",
+        "facts": {
+          "email": {
+            "label": "Email",
+            "value": "contact@justice.gouv.aor"
+          },
+          "phone": {
+            "label": "Phone",
+            "value": "+0 12 34 56 78"
+          },
+          "address": {
+            "label": "Address",
+            "value": "13 place de la Justice, Astoria"
+          },
+          "hours": {
+            "label": "Opening hours",
+            "value": "Monday to Friday, 9am to 5pm"
+          }
+        }
+      },
+      "recipients": {
+        "presidence": "Presidency of the Republic",
+        "communications": "Communications service",
+        "presse": "Press office",
+        "monnaie": "Ministry services",
+        "etablissements": "Judicial administration"
+      }
+    },
+    "legal": {
+      "related": {
+        "title": "Legal documents",
+        "kicker": "In this section",
+        "accessibility": {
+          "label": "Accessibility statement",
+          "desc": "The portal's commitment to accessibility."
+        },
+        "privacy": {
+          "label": "Privacy policy",
+          "desc": "How personal data is handled on the portal."
+        },
+        "terms": {
+          "label": "Terms of use",
+          "desc": "The rules for using the portal."
+        },
+        "cookies": {
+          "label": "Cookie management",
+          "desc": "The cookies used by the portal and your choices."
+        },
+        "sitemap": {
+          "label": "Sitemap",
+          "desc": "All the sections of the portal."
+        }
+      },
+      "landing": {
+        "hero": {
+          "kicker": "Legal information",
+          "title": "Legal documents",
+          "lead": "The binding documents and information about how the portal works.",
+          "notice": "These documents are updated whenever the service changes."
+        }
+      },
+      "accessibility": {
+        "hero": {
+          "kicker": "Accessibility",
+          "title": "Accessibility statement",
+          "lead": "The Ministry of Justice is committed to making its portal accessible to everyone.",
+          "notice": "Compliance is partial."
+        },
+        "sections": {
+          "declaration": {
+            "kicker": "Commitment",
+            "title": "Commitment statement",
+            "lead": "The ministry is committed to making the portal accessible, in accordance with the law on the accessibility of digital services.",
+            "paragraphs": {
+              "p1": "This accessibility statement applies to the justice.gouv.aor portal.",
+              "p2": "The ministry implements the necessary actions to reach compliance with the digital services accessibility framework."
+            }
+          },
+          "conformite": {
+            "kicker": "Compliance status",
+            "title": "Compliance status",
+            "lead": "The portal is partially compliant with the applicable framework.",
+            "bullets": {
+              "b1": "The contrast of some illustrations remains insufficient.",
+              "b2": "Some videos do not yet have subtitles.",
+              "b3": "Some PDF documents still need to be made accessible."
+            }
+          },
+          "nonAccessibles": {
+            "kicker": "Non-accessible content",
+            "title": "Non-accessible content",
+            "lead": "Non-accessible content and its alternatives.",
+            "bullets": {
+              "b1": "Some data tables need a simplified rendering.",
+              "b2": "Some forms have fields without an explicit label.",
+              "b3": "Interactive maps do not have a text alternative."
+            }
+          },
+          "etablissement": {
+            "kicker": "Drafting",
+            "title": "Drafting of this statement",
+            "lead": "Information about how this statement was produced.",
+            "facts": {
+              "tests": {
+                "label": "Tests",
+                "value": "Tests carried out in 2026 on a sample of pages"
+              },
+              "referentiel": {
+                "label": "Framework",
+                "value": "Digital services accessibility framework"
+              },
+              "outils": {
+                "label": "Tools",
+                "value": "Screen readers and common browsers"
+              }
+            }
+          },
+          "retour": {
+            "kicker": "Contact",
+            "title": "Feedback and contact",
+            "lead": "If you experience an accessibility issue, you can write to us.",
+            "paragraphs": {
+              "p1": "Our team will respond to any difficulty within a reasonable time."
+            }
+          },
+          "voiesRecours": {
+            "kicker": "Recourse",
+            "title": "Recourse",
+            "lead": "If the response you receive is not satisfactory, you can contact the competent mediator.",
+            "bullets": {
+              "b1": "Write to the service in charge of the portal's accessibility.",
+              "b2": "Contact the mediator of public services.",
+              "b3": "Bring the matter before the competent court."
+            }
+          }
+        }
+      },
+      "privacy": {
+        "hero": {
+          "kicker": "Privacy",
+          "title": "Privacy policy",
+          "lead": "How the portal processes your personal data.",
+          "notice": "Your data is processed in accordance with the law in force."
+        },
+        "sections": {
+          "responsable": {
+            "kicker": "Controller",
+            "title": "Data controller",
+            "lead": "The entity responsible for processing your data.",
+            "paragraphs": {
+              "p1": "The Ministry of Justice is the data controller for the data collected on the portal."
+            },
+            "facts": {
+              "responsable": {
+                "label": "Controller",
+                "value": "Ministry of Justice"
+              },
+              "adresse": {
+                "label": "Address",
+                "value": "13 place de la Justice, Astoria"
+              },
+              "dpo": {
+                "label": "Data protection officer",
+                "value": "dpo@justice.gouv.aor"
+              }
+            }
+          },
+          "donnees": {
+            "kicker": "Data collected",
+            "title": "Data collected",
+            "lead": "The categories of data processed by the portal.",
+            "bullets": {
+              "b1": "Browsing data (pages visited, origin).",
+              "b2": "Data entered in the contact forms.",
+              "b3": "Authentication data, when you use the service.",
+              "b4": "Audience measurement data, if you accept cookies."
+            }
+          },
+          "finalites": {
+            "kicker": "Purposes",
+            "title": "Purposes and legal bases",
+            "lead": "Why we process your data and on what basis.",
+            "paragraphs": {
+              "p1": "Your data is processed to provide the portal's services, answer your requests and ensure the security of the service.",
+              "p2": "Each processing operation is based on a legal basis provided for by law, indicated in the notices of each form."
+            }
+          },
+          "conservation": {
+            "kicker": "Retention",
+            "title": "Retention period",
+            "lead": "How long your data is kept.",
+            "facts": {
+              "duree": {
+                "label": "Duration",
+                "value": "Depending on the processing, from a few months to several years"
+              },
+              "critere": {
+                "label": "Criterion",
+                "value": "The legal retention period applicable to each processing"
+              }
+            }
+          },
+          "droits": {
+            "kicker": "Your rights",
+            "title": "Your rights",
+            "lead": "You have rights over your personal data.",
+            "bullets": {
+              "b1": "The right to access and obtain a copy of your data.",
+              "b2": "The right to rectify inaccurate data.",
+              "b3": "The right to erasure of your data.",
+              "b4": "The right to object to the processing of your data.",
+              "b5": "The right to data portability."
+            }
+          },
+          "cookies": {
+            "kicker": "Cookies",
+            "title": "Cookies and audience measurement",
+            "lead": "The portal's cookie policy.",
+            "paragraphs": {
+              "p1": "The only trackers used are those for audience measurement, subject to your consent."
+            },
+            "notice": "You can change your choices at any time.",
+            "cta": "Manage my cookies"
+          }
+        }
+      },
+      "terms": {
+        "hero": {
+          "kicker": "Terms of use",
+          "title": "Terms of use",
+          "lead": "The rules for using the Ministry of Justice portal.",
+          "notice": "By using the portal you accept these terms."
+        },
+        "sections": {
+          "objet": {
+            "kicker": "Purpose",
+            "title": "Purpose",
+            "lead": "What these terms govern.",
+            "paragraphs": {
+              "p1": "These terms govern the use of the justice.gouv.aor portal.",
+              "p2": "The portal is a public information and guidance service."
+            }
+          },
+          "utilisation": {
+            "kicker": "Use",
+            "title": "Use of the portal",
+            "lead": "The rules applicable to your browsing.",
+            "bullets": {
+              "b1": "The portal is freely accessible to everyone.",
+              "b2": "Using the portal implies complying with the law.",
+              "b3": "Any attempt to disrupt the service is prohibited.",
+              "b4": "The published information does not replace the official texts."
+            }
+          },
+          "contenus": {
+            "kicker": "Content",
+            "title": "Content and data",
+            "lead": "The regime of the content published on the portal.",
+            "paragraphs": {
+              "p1": "The content of the portal may be reused under the conditions set out in the applicable licence.",
+              "p2": "Content protected by third-party rights remains subject to those rights."
+            }
+          },
+          "responsabilite": {
+            "kicker": "Liability",
+            "title": "Liability",
+            "lead": "The ministry's liability for the content published.",
+            "paragraphs": {
+              "p1": "The ministry ensures the accuracy of the information published and updates it regularly.",
+              "p2": "The ministry cannot be held liable for damage resulting from the use of the portal."
+            }
+          },
+          "liens": {
+            "kicker": "Links",
+            "title": "Links",
+            "lead": "Links to other services.",
+            "paragraphs": {
+              "p1": "Links to external sites do not engage the ministry's liability."
+            }
+          },
+          "modification": {
+            "kicker": "Amendment",
+            "title": "Amendment of the terms",
+            "lead": "These terms may be updated.",
+            "paragraphs": {
+              "p1": "These terms may be amended at any time; the version in force at the time of your visit applies."
+            },
+            "notice": "Any amendment is published on this page."
+          }
+        }
+      },
+      "cookies": {
+        "hero": {
+          "kicker": "Cookies",
+          "title": "Cookie management",
+          "lead": "The cookies used by the portal and the choices offered to you.",
+          "notice": "Your consent is free and can be withdrawn at any time."
+        },
+        "sections": {
+          "definition": {
+            "kicker": "Definition",
+            "title": "What is a cookie?",
+            "lead": "The role of cookies on a website.",
+            "paragraphs": {
+              "p1": "A cookie is a small file stored on your device when you visit a website.",
+              "p2": "It stores browsing information to improve the service."
+            }
+          },
+          "cookiesDeposes": {
+            "kicker": "Cookies used",
+            "title": "The cookies used by the portal",
+            "lead": "The details of the cookies and their purposes.",
+            "table": {
+              "caption": "The cookies used on the portal",
+              "headers": {
+                "0": "Cookie",
+                "1": "Purpose",
+                "2": "Duration"
+              },
+              "rows": {
+                "0": [
+                  "_ga",
+                  "Audience measurement",
+                  "13 months"
+                ],
+                "1": [
+                  "_consent",
+                  "Remembering your choice",
+                  "6 months"
+                ],
+                "2": [
+                  "session",
+                  "Visitor session",
+                  "Session"
+                ],
+                "3": [
+                  "pref",
+                  "Display preferences",
+                  "1 year"
+                ]
+              },
+              "note": "Audience measurement cookies are only used with your consent."
+            }
+          },
+          "gestion": {
+            "kicker": "Management",
+            "title": "Manage your cookies",
+            "lead": "How to control the use of cookies.",
+            "bullets": {
+              "b1": "You can accept or refuse audience measurement cookies.",
+              "b2": "You can configure your browser to refuse cookies.",
+              "b3": "You can delete the cookies already stored."
+            },
+            "notice": "Refusing cookies does not affect your access to the information on the portal."
+          }
+        }
+      }
+    }
+  },
+  "nav": {
+    "primary": {
+      "justice": "Justice",
+      "droit": "Law",
+      "juridictions": "Courts",
+      "procedures": "Procedures",
+      "professionnels": "Professionals",
+      "donneesRessources": "Data & resources",
+      "leMinistere": "The Ministry"
+    },
+    "panel": {
+      "justice": {
+        "title": "Justice",
+        "text": "The organisation of the justice system, judicial policy, access to the law and the safeguards of court users.",
+        "allLink": "All about Justice",
+        "organisation": {
+          "title": "Organisation",
+          "systemeJudiciaire": "Judicial system",
+          "organisationDeLaJustice": "Organisation of the Justice system",
+          "principesFondamentaux": "Fundamental principles",
+          "reformeDeLaJustice": "Justice reform"
+        },
+        "politiqueJudiciaire": {
+          "title": "Judicial policy",
+          "priorites": "Priorities",
+          "programmes": "Programmes",
+          "reformes": "Reforms",
+          "evaluationDesPolitiques": "Policy evaluation"
+        },
+        "accesALaJustice": {
+          "title": "Access to justice",
+          "aideJuridictionnelle": "Legal aid",
+          "mediation": "Mediation",
+          "conciliation": "Conciliation",
+          "accesAuxServicesJudiciaires": "Access to judicial services"
+        },
+        "droits": {
+          "title": "Rights",
+          "droitsFondamentaux": "Fundamental rights",
+          "droitsDesVictimes": "Victims' rights",
+          "droitsDesPersonnesMisesEnCause": "Rights of persons charged",
+          "protectionDesPersonnesVulnerables": "Protection of vulnerable persons"
+        }
+      },
+      "droit": {
+        "title": "Law",
+        "text": "Legislation, codes, case law and legal research tools.",
+        "allLink": "All about the law",
+        "textesJuridiques": {
+          "title": "Legal texts",
+          "constitution": "Constitution",
+          "lois": "Statutes",
+          "decrets": "Decrees",
+          "reglements": "Regulations"
+        },
+        "codes": {
+          "title": "Codes",
+          "codeCivil": "Civil Code",
+          "codePenal": "Criminal Code",
+          "codeDeProcedure": "Code of Procedure",
+          "autresCodes": "Other codes"
+        },
+        "jurisprudence": {
+          "title": "Case law",
+          "decisions": "Decisions",
+          "jurisprudenceConstitutionnelle": "Constitutional case law",
+          "jurisprudenceJudiciaire": "Judicial case law",
+          "jurisprudenceAdministrative": "Administrative case law"
+        },
+        "rechercheJuridique": {
+          "title": "Legal research",
+          "rechercheDansLesTextes": "Search in legal texts",
+          "rechercheParArticle": "Search by article",
+          "rechercheParDomaine": "Search by area of law",
+          "rechercheAvancee": "Advanced search"
+        }
+      },
+      "juridictions": {
+        "title": "Courts",
+        "text": "The judicial order, the courts, specialised courts and hearings.",
+        "allLink": "All about the courts",
+        "ordreJudiciaire": {
+          "title": "Judicial order",
+          "courSupreme": "Supreme Court",
+          "coursDAppel": "Courts of Appeal",
+          "tribunaux": "Courts",
+          "ministerePublic": "Public prosecutor's office"
+        },
+        "tribunaux": {
+          "title": "Courts",
+          "tribunauxCivils": "Civil courts",
+          "tribunauxPenaux": "Criminal courts",
+          "tribunauxAdministratifs": "Administrative courts",
+          "annuaireDesTribunaux": "Directory of courts"
+        },
+        "juridictionsSpecialisees": {
+          "title": "Specialised courts",
+          "juridictionsCommerciales": "Commercial courts",
+          "juridictionsFamiliales": "Family courts",
+          "juridictionsDuTravail": "Labour courts",
+          "autresJuridictionsSpecialisees": "Other specialised courts"
+        },
+        "audiences": {
+          "title": "Hearings",
+          "calendrierDesAudiences": "Hearing calendar",
+          "audiencesPubliques": "Public hearings",
+          "informationsPratiques": "Practical information",
+          "rechercheDAudience": "Find a hearing"
+        }
+      },
+      "procedures": {
+        "title": "Procedures",
+        "text": "Civil, criminal and administrative procedures and the steps available to court users.",
+        "allLink": "All about procedures",
+        "civil": {
+          "title": "Civil",
+          "litigesCivils": "Civil disputes",
+          "famille": "Family",
+          "successions": "Succession",
+          "responsabilite": "Liability"
+        },
+        "penal": {
+          "title": "Criminal",
+          "plainte": "Filing a complaint",
+          "enquete": "Investigation",
+          "procesPenal": "Criminal trial",
+          "droitsDesVictimes": "Victims' rights"
+        },
+        "administratif": {
+          "title": "Administrative",
+          "recoursAdministratif": "Administrative appeal",
+          "recoursJuridictionnel": "Judicial appeal",
+          "contentieuxAdministratif": "Administrative litigation",
+          "executionDesDecisions": "Enforcement of decisions"
+        },
+        "demarches": {
+          "title": "Steps for citizens",
+          "deposerUneDemande": "Submit a request",
+          "consulterUnFormulaire": "View a form",
+          "suivreUneProcedure": "Track a procedure",
+          "obtenirUnDocument": "Get a document"
+        }
+      },
+      "professionnels": {
+        "title": "Professionals",
+        "text": "The judiciary, legal auxiliaries, careers and training.",
+        "allLink": "All about the professionals",
+        "magistrature": {
+          "title": "Judiciary",
+          "magistrats": "Judges",
+          "parquet": "Prosecution service",
+          "statut": "Status",
+          "deontologie": "Professional ethics"
+        },
+        "auxiliairesDeJustice": {
+          "title": "Legal auxiliaries",
+          "avocats": "Lawyers",
+          "greffiers": "Court clerks",
+          "notaires": "Notaries",
+          "expertsJudiciaires": "Court experts"
+        },
+        "carrieres": {
+          "title": "Careers",
+          "emplois": "Jobs",
+          "concours": "Competitive examinations",
+          "recrutement": "Recruitment",
+          "mobilite": "Mobility"
+        },
+        "formation": {
+          "title": "Training",
+          "formationJudiciaire": "Judicial training",
+          "formationContinue": "Continuing education",
+          "ecoleDeLaMagistrature": "School of the judiciary",
+          "ressourcesProfessionnelles": "Professional resources"
+        }
+      },
+      "donneesRessources": {
+        "title": "Data & resources",
+        "text": "Ministry decisions, statistics, publications and open data.",
+        "allLink": "All about data and resources",
+        "decisions": {
+          "title": "Decisions",
+          "decisionsJudiciaires": "Judicial decisions",
+          "decisionsConstitutionnelles": "Constitutional decisions",
+          "decisionsAdministratives": "Administrative decisions",
+          "rechercheDeDecisions": "Search decisions"
+        },
+        "statistiques": {
+          "title": "Statistics",
+          "activiteJudiciaire": "Judicial activity",
+          "justicePenale": "Criminal justice",
+          "justiceCivile": "Civil justice",
+          "statistiquesAnnuelles": "Annual statistics"
+        },
+        "publications": {
+          "title": "Publications",
+          "rapports": "Reports",
+          "etudes": "Studies",
+          "guides": "Guides",
+          "archives": "Archives"
+        },
+        "donneesOuvertes": {
+          "title": "Open data",
+          "jeuxDeDonnees": "Datasets",
+          "api": "API",
+          "reutilisation": "Reuse",
+          "documentation": "Documentation"
+        }
+      },
+      "leMinistere": {
+        "title": "The Ministry",
+        "text": "The institution, its organisation, its transparency and its news.",
+        "allLink": "All about the Ministry",
+        "institution": {
+          "title": "Institution",
+          "leMinistre": "The Minister",
+          "missions": "Missions",
+          "organisation": "Organisation",
+          "organigramme": "Organisation chart"
+        },
+        "administration": {
+          "title": "Administration",
+          "servicesDuMinistere": "Ministry services",
+          "administrationJudiciaire": "Judicial administration",
+          "budget": "Budget",
+          "marchesPublics": "Public procurement"
+        },
+        "transparence": {
+          "title": "Transparency",
+          "budgetEtFinances": "Budget and finances",
+          "donneesPubliques": "Public data",
+          "rapportsDActivite": "Activity reports",
+          "deontologie": "Professional ethics"
+        },
+        "actualitesEtContact": {
+          "title": "News & contact",
+          "actualites": "News",
+          "communiques": "Press releases",
+          "agenda": "Agenda",
+          "contact": "Contact"
+        }
+      }
+    },
+    "columns": {
+      "justice": "Justice",
+      "droit": "Law",
+      "juridictions": "Courts",
+      "procedures": "Procedures",
+      "professionnels": "Professionals",
+      "donneesRessources": "Data & resources",
+      "leMinistere": "The Ministry"
+    }
+  }
+}

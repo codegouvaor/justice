@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/codegouvaor/bce/server/src/models"
-	"github.com/codegouvaor/bce/server/src/utils"
+	"github.com/codegouvaor/justice/server/src/models"
+	"github.com/codegouvaor/justice/server/src/utils"
 )
 
 func (h *apiHandler) listMedia(c *gin.Context) {

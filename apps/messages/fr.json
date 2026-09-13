@@ -1,0 +1,979 @@
+{
+  "brand": {
+    "republicName": "République d'Astoria"
+  },
+  "meta": {
+    "defaultTitle": "Ministère de la Justice",
+    "suffix": "Ministère de la Justice",
+    "description": "Portail officiel du ministère de la Justice de la République d'Astoria.",
+    "searchPlaceholder": "Rechercher sur justice.gouv.aor"
+  },
+  "header": {
+    "homeTitle": "Accueil — Ministère de la Justice",
+    "serviceTitle": "Ministère de la Justice",
+    "serviceTagline": "Le service public de la justice",
+    "myGouv": "Se connecter",
+    "accountLabel": "Mon compte",
+    "logoutLink": "Se déconnecter",
+    "account": {
+      "profile": "Mon profil",
+      "settings": "Mes paramètres"
+    }
+  },
+  "common": {
+    "skipToContent": "Aller au contenu",
+    "skipToFooter": "Aller au pied de page",
+    "backToTop": {
+      "ariaLabel": "Haut de page"
+    },
+    "cookiePopup": {
+      "ariaLabel": "Gestion des cookies",
+      "title": "Ce portail utilise des cookies",
+      "message": "Nous déposons des cookies de mesure d'audience pour améliorer le service. Vous pouvez accepter ou refuser leur dépôt.",
+      "accept": "Accepter",
+      "decline": "Refuser",
+      "manage": "Gérer mes choix"
+    }
+  },
+  "footer": {
+    "contentDescription": "Le portail officiel du ministère de la Justice de la République d'Astoria : l'organisation de la justice, vos droits et vos démarches.",
+    "bottom": {
+      "contact": "Contact",
+      "planDuPortail": "Plan du portail",
+      "documentsOpposables": "Documents opposables",
+      "privacy": "Confidentialité",
+      "cookies": "Gestion des cookies",
+      "publications": "Publications officielles"
+    },
+    "license": "Sauf mention contraire, les contenus de ce portail sont proposés sous <link>licence APSL</link>.",
+    "columns": {
+      "justice": "Justice",
+      "droit": "Droit",
+      "juridictions": "Juridictions",
+      "procedures": "Procédures",
+      "professionnels": "Professionnels",
+      "donneesRessources": "Données & ressources",
+      "leMinistere": "Le Ministère"
+    }
+  },
+  "stayInTouch": {
+    "newsletter": {
+      "title": "Lettre d'information",
+      "desc": "Recevez chaque mois les actualités du ministère de la Justice.",
+      "label": "Votre adresse électronique",
+      "placeholder": "adresse@exemple.aor",
+      "submit": "S'abonner",
+      "success": "Votre inscription a bien été prise en compte.",
+      "hint": "En vous inscrivant, vous acceptez de recevoir la lettre d'information du ministère.",
+      "invalidEmail": "Veuillez saisir une adresse électronique valide."
+    },
+    "follow": {
+      "title": "Suivez le ministère",
+      "items": {
+        "x": "Suivre le ministère sur X",
+        "facebook": "Suivre le ministère sur Facebook",
+        "linkedin": "Suivre le ministère sur LinkedIn",
+        "instagram": "Suivre le ministère sur Instagram",
+        "threads": "Suivre le ministère sur Threads"
+      }
+    }
+  },
+  "home": {
+    "metaTitle": "Accueil — Ministère de la Justice",
+    "hero": {
+      "kicker": "Ministère de la Justice",
+      "title": "Garantir l'accès au droit et l'exercice de la justice",
+      "lead": "Le ministère de la Justice assure le fonctionnement des institutions judiciaires de la République et veille au respect des droits de chacun. Ce portail vous permet de consulter le droit, de trouver une juridiction, de comprendre une procédure et d'accéder aux services de la Justice."
+    },
+    "search": {
+      "title": "Rechercher sur justice.gouv.aor",
+      "label": "Rechercher",
+      "placeholder": "Le droit, une juridiction, une procédure, une décision…",
+      "popularLabel": "Recherches fréquentes",
+      "popular": {
+        "aideJuridictionnelle": "Aide juridictionnelle",
+        "porterPlainte": "Porter plainte",
+        "codeCivil": "Code civil",
+        "courDAppel": "Cours d'appel"
+      }
+    },
+    "actions": {
+      "kicker": "Accès rapides",
+      "title": "Que souhaitez-vous faire ?",
+      "lead": "Les actions les plus fréquentes, pour avancer sans parcourir tout le portail.",
+      "items": {
+        "trouverJuridiction": {
+          "title": "Trouver une juridiction",
+          "desc": "Trouver le tribunal ou la cour compétent, ses coordonnées et ses horaires."
+        },
+        "comprendreProcedure": {
+          "title": "Comprendre une procédure",
+          "desc": "Les étapes d'une procédure civile, pénale ou administrative."
+        },
+        "consulterDroit": {
+          "title": "Consulter le droit",
+          "desc": "La Constitution, les codes, les lois et les règlements en vigueur."
+        },
+        "rechercherDecision": {
+          "title": "Rechercher une décision",
+          "desc": "Retrouver une décision de justice rendue publique."
+        },
+        "aideJuridique": {
+          "title": "Obtenir une aide juridique",
+          "desc": "Les conditions de l'aide juridictionnelle et comment en bénéficier."
+        },
+        "porterPlainte": {
+          "title": "Porter plainte",
+          "desc": "Les démarches pour signaler une infraction et les droits des victimes."
+        }
+      }
+    },
+    "news": {
+      "kicker": "Actualités",
+      "title": "Actualités de la Justice",
+      "lead": "Les réformes, les nouvelles dispositions et les communications du ministère.",
+      "allLink": "Toutes les actualités",
+      "featured": {
+        "tag": "Réforme",
+        "title": "Le ministère renforce l'accès au droit dans les territoires",
+        "text": "De nouvelles permanences d'accès au droit sont déployées dans les tribunaux pour rapprocher le service public de la justice des justiciables.",
+        "date": "12 septembre 2026"
+      },
+      "secondary": {
+        "s1": {
+          "tag": "Procédure",
+          "title": "Le dépôt en ligne de certaines demandes se généralise",
+          "date": "9 septembre 2026"
+        },
+        "s2": {
+          "tag": "Juridictions",
+          "title": "Les calendriers d'audience sont publiés en ligne",
+          "date": "5 septembre 2026"
+        },
+        "s3": {
+          "tag": "Données",
+          "title": "Le rapport annuel d'activité des services judiciaires est publié",
+          "date": "1er septembre 2026"
+        }
+      }
+    },
+    "droit": {
+      "kicker": "Le droit",
+      "title": "Comprendre le droit astorien",
+      "lead": "La Constitution, les codes, les lois et les règlements de la République, ainsi que la jurisprudence des juridictions.",
+      "cta": "Tout sur le droit",
+      "items": {
+        "constitution": {
+          "tag": "Texte fondateur",
+          "title": "Constitution",
+          "desc": "La norme suprême de la République et les principes qu'elle garantit."
+        },
+        "codes": {
+          "tag": "Référentiel",
+          "title": "Codes",
+          "desc": "Les codes en vigueur : civil, pénal, de procédure et autres."
+        },
+        "loisReglements": {
+          "tag": "Textes",
+          "title": "Lois et règlements",
+          "desc": "Les lois, décrets et règlements publiés et leurs versions en vigueur."
+        },
+        "jurisprudence": {
+          "tag": "Décisions",
+          "title": "Jurisprudence",
+          "desc": "Les grandes décisions des juridictions constitutionnelle, judiciaire et administrative."
+        }
+      }
+    },
+    "juridictions": {
+      "kicker": "Juridictions",
+      "title": "Les juridictions",
+      "lead": "Le système juridictionnel astorien, de la Cour suprême aux tribunaux de première instance.",
+      "findLink": "Trouver une juridiction",
+      "items": {
+        "courSupreme": {
+          "title": "Cour suprême",
+          "desc": "La plus haute juridiction de l'ordre judiciaire."
+        },
+        "coursDAppel": {
+          "title": "Cours d'appel",
+          "desc": "Les juridictions du second degré et leur ressort."
+        },
+        "tribunaux": {
+          "title": "Tribunaux",
+          "desc": "Les tribunaux civils, pénaux et administratifs de première instance."
+        },
+        "specialisees": {
+          "title": "Juridictions spécialisées",
+          "desc": "Les juridictions commerciales, familiales, du travail et autres."
+        }
+      }
+    },
+    "procedures": {
+      "kicker": "Vos démarches",
+      "title": "Vos démarches",
+      "lead": "Les grandes familles de démarches, pour savoir par où commencer.",
+      "allLink": "Voir toutes les procédures",
+      "items": {
+        "civil": {
+          "title": "Civil",
+          "desc": "Litiges, famille, succession : les démarches devant les juridictions civiles."
+        },
+        "penal": {
+          "title": "Pénal",
+          "desc": "Plainte, enquête, procès pénal : vos droits et les démarches."
+        },
+        "administratif": {
+          "title": "Administratif",
+          "desc": "Recours contre une décision de l'administration et contentieux administratif."
+        },
+        "demarches": {
+          "title": "Documents et demandes",
+          "desc": "Déposer une demande, obtenir un document, suivre une procédure."
+        }
+      }
+    },
+    "services": {
+      "kicker": "Services numériques",
+      "title": "Les services numériques de la Justice",
+      "lead": "Suivre une procédure, déposer une demande, consulter un document : vos démarches en ligne.",
+      "items": {
+        "suivreProcedure": {
+          "title": "Suivre une procédure",
+          "desc": "Suivre l'avancement d'une procédure qui vous concerne."
+        },
+        "consulterFormulaire": {
+          "title": "Consulter un formulaire",
+          "desc": "Les formulaires administratifs de la Justice en ligne."
+        },
+        "deposerDemande": {
+          "title": "Déposer une demande",
+          "desc": "Déposer en ligne une demande auprès des services judiciaires."
+        },
+        "obtenirDocument": {
+          "title": "Obtenir un document",
+          "desc": "Demander un document relatif à votre dossier."
+        }
+      },
+      "mygouv": {
+        "title": "Accéder à mes services",
+        "text": "MyGouv est le service d'identification et d'accès aux services personnels de la République. Un seul compte pour accéder, en toute sécurité, aux services numériques qui exigent une identification.",
+        "cta": "Se connecter avec MyGouv"
+      }
+    },
+    "professionnels": {
+      "kicker": "Professionnels",
+      "title": "Professionnels de la Justice",
+      "lead": "Les informations et les ressources destinées aux magistrats, aux auxiliaires de justice et aux personnels du ministère.",
+      "cta": "Tout sur les professionnels",
+      "items": {
+        "magistrature": {
+          "title": "Magistrature",
+          "desc": "Le statut, la déontologie et l'organisation de la magistrature."
+        },
+        "auxiliaires": {
+          "title": "Avocats et auxiliaires de justice",
+          "desc": "Avocats, greffiers, notaires, experts judiciaires : statuts et obligations."
+        },
+        "carrieres": {
+          "title": "Carrières",
+          "desc": "Les emplois, les concours et les recrutements du ministère."
+        },
+        "formation": {
+          "title": "Formation",
+          "desc": "La formation initiale et continue des professionnels de la justice."
+        }
+      }
+    },
+    "donnees": {
+      "kicker": "Données & ressources",
+      "title": "Décisions, données et ressources",
+      "lead": "Les décisions de justice, les statistiques judiciaires, les rapports et les données ouvertes du ministère.",
+      "allLink": "Tout explorer"
+    },
+    "ministry": {
+      "kicker": "Le Ministère",
+      "title": "Le Ministère de la Justice",
+      "lead": "Le ministère prépare et met en œuvre la politique judiciaire de la République. Découvrez ses missions, son organisation, son budget et ses engagements de transparence."
+    }
+  },
+  "pages": {
+    "sitemap": {
+      "meta": {
+        "title": "Plan du portail",
+        "description": "Tous les contenus du portail du ministère de la Justice."
+      },
+      "hero": {
+        "kicker": "Plan du portail",
+        "title": "Plan du portail",
+        "lead": "Retrouvez l'ensemble des rubriques du portail du ministère de la Justice."
+      },
+      "sections": {
+        "portail": {
+          "kicker": "Navigation principale",
+          "title": "Le portail",
+          "lead": "Les sept rubriques principales du portail."
+        },
+        "transversal": {
+          "kicker": "Rubriques transversales",
+          "title": "Autres pages",
+          "lead": "Les pages d'information et les documents opposables.",
+          "links": {
+            "contact": "Contact",
+            "accessibility": "Accessibilité",
+            "privacy": "Confidentialité",
+            "terms": "Conditions d'utilisation",
+            "cookies": "Gestion des cookies",
+            "publications": "Publications officielles",
+            "documentsOpposables": "Documents opposables"
+          }
+        }
+      }
+    },
+    "contact": {
+      "meta": {
+        "title": "Contact",
+        "description": "Contacter le ministère de la Justice."
+      },
+      "hero": {
+        "kicker": "Contact",
+        "title": "Nous contacter",
+        "lead": "Une question sur le portail ou sur vos droits ? Écrivez-nous."
+      },
+      "formSection": {
+        "kicker": "Formulaire",
+        "title": "Envoyer un message",
+        "lead": "Choisissez un destinataire et remplissez le formulaire."
+      },
+      "form": {
+        "recipientLabel": "Destinataire",
+        "selectRecipient": "Sélectionner un destinataire",
+        "presidency": "Présidence de la République",
+        "nameLabel": "Nom",
+        "namePlaceholder": "Votre nom",
+        "emailFieldLabel": "Adresse électronique",
+        "emailPlaceholder": "votre@adresse.aor",
+        "subjectLabel": "Objet",
+        "subjectPlaceholder": "L'objet de votre message",
+        "messageLabel": "Message",
+        "messagePlaceholder": "Votre message",
+        "sendButton": "Envoyer",
+        "requiredField": "Ce champ est obligatoire.",
+        "invalidEmail": "Veuillez saisir une adresse électronique valide."
+      },
+      "channels": {
+        "kicker": "Autres canaux",
+        "title": "Nous joindre autrement",
+        "lead": "Les coordonnées des services du ministère.",
+        "facts": {
+          "email": {
+            "label": "Courriel",
+            "value": "contact@justice.gouv.aor"
+          },
+          "phone": {
+            "label": "Téléphone",
+            "value": "+0 12 34 56 78"
+          },
+          "address": {
+            "label": "Adresse",
+            "value": "13 place de la Justice, Astoria"
+          },
+          "hours": {
+            "label": "Horaires",
+            "value": "Du lundi au vendredi, de 9h à 17h"
+          }
+        }
+      },
+      "recipients": {
+        "presidence": "Présidence de la République",
+        "communications": "Service de la communication",
+        "presse": "Service de presse",
+        "monnaie": "Services du ministère",
+        "etablissements": "Administration judiciaire"
+      }
+    },
+    "legal": {
+      "related": {
+        "title": "Documents juridiques",
+        "kicker": "Dans cette rubrique",
+        "accessibility": {
+          "label": "Déclaration d'accessibilité",
+          "desc": "L'engagement du portail en matière d'accessibilité."
+        },
+        "privacy": {
+          "label": "Confidentialité",
+          "desc": "Le traitement des données personnelles sur le portail."
+        },
+        "terms": {
+          "label": "Conditions d'utilisation",
+          "desc": "Les règles d'utilisation du portail."
+        },
+        "cookies": {
+          "label": "Gestion des cookies",
+          "desc": "Les cookies déposés par le portail et vos choix."
+        },
+        "sitemap": {
+          "label": "Plan du portail",
+          "desc": "L'ensemble des rubriques du portail."
+        }
+      },
+      "landing": {
+        "hero": {
+          "kicker": "Informations légales",
+          "title": "Documents juridiques",
+          "lead": "Les documents opposables et les informations relatives au fonctionnement du portail.",
+          "notice": "Ces documents sont mis à jour en cas d'évolution du service."
+        }
+      },
+      "accessibility": {
+        "hero": {
+          "kicker": "Accessibilité",
+          "title": "Déclaration d'accessibilité",
+          "lead": "Le ministère de la Justice s'engage à rendre son portail accessible à tous.",
+          "notice": "La conformité est partielle."
+        },
+        "sections": {
+          "declaration": {
+            "kicker": "Engagement",
+            "title": "Déclaration d'engagement",
+            "lead": "Le ministère s'engage à rendre le portail accessible, conformément à la loi sur l'accessibilité des services numériques.",
+            "paragraphs": {
+              "p1": "Cette déclaration d'accessibilité s'applique au portail justice.gouv.aor.",
+              "p2": "Le ministère met en œuvre les actions nécessaires afin d'atteindre la conformité avec le référentiel d'accessibilité des services numériques."
+            }
+          },
+          "conformite": {
+            "kicker": "État de conformité",
+            "title": "État de conformité",
+            "lead": "Le portail est partiellement conforme au référentiel applicable.",
+            "bullets": {
+              "b1": "Les contrastes de certaines illustrations restent insuffisants.",
+              "b2": "Certains contenus vidéo ne disposent pas encore de sous-titres.",
+              "b3": "Quelques documents PDF restent à rendre accessibles."
+            }
+          },
+          "nonAccessibles": {
+            "kicker": "Contenus non accessibles",
+            "title": "Contenus non accessibles",
+            "lead": "Les contenus non accessibles et leurs alternatives.",
+            "bullets": {
+              "b1": "Certains tableaux de données nécessitent une restitution simplifiée.",
+              "b2": "Quelques formulaires comportent des champs sans libellé explicite.",
+              "b3": "Les cartes interactives ne disposent pas d'une alternative textuelle."
+            }
+          },
+          "etablissement": {
+            "kicker": "Établissement",
+            "title": "Établissement de cette déclaration",
+            "lead": "Les informations relatives à la réalisation de cette déclaration.",
+            "facts": {
+              "tests": {
+                "label": "Tests",
+                "value": "Tests réalisés en 2026 sur un échantillon de pages"
+              },
+              "referentiel": {
+                "label": "Référentiel",
+                "value": "Référentiel d'accessibilité des services numériques"
+              },
+              "outils": {
+                "label": "Outils",
+                "value": "Lecteurs d'écran et navigateurs courants"
+              }
+            }
+          },
+          "retour": {
+            "kicker": "Contact",
+            "title": "Retour d'information et contact",
+            "lead": "Si vous rencontrez un problème d'accessibilité, vous pouvez nous écrire.",
+            "paragraphs": {
+              "p1": "Notre équipe s'efforce de répondre à toute difficulté dans un délai raisonnable."
+            }
+          },
+          "voiesRecours": {
+            "kicker": "Voies de recours",
+            "title": "Voies de recours",
+            "lead": "Si la réponse apportée ne vous convient pas, vous pouvez saisir le médiateur compétent.",
+            "bullets": {
+              "b1": "Écrire au service en charge de l'accessibilité du portail.",
+              "b2": "Saisir le médiateur des services publics.",
+              "b3": "Saisir la juridiction compétente."
+            }
+          }
+        }
+      },
+      "privacy": {
+        "hero": {
+          "kicker": "Confidentialité",
+          "title": "Politique de confidentialité",
+          "lead": "La manière dont le portail traite vos données personnelles.",
+          "notice": "Vos données sont traitées conformément à la loi en vigueur."
+        },
+        "sections": {
+          "responsable": {
+            "kicker": "Responsable",
+            "title": "Responsable de traitement",
+            "lead": "L'entité responsable du traitement de vos données.",
+            "paragraphs": {
+              "p1": "Le ministère de la Justice est responsable du traitement des données collectées sur le portail."
+            },
+            "facts": {
+              "responsable": {
+                "label": "Responsable",
+                "value": "Ministère de la Justice"
+              },
+              "adresse": {
+                "label": "Adresse",
+                "value": "13 place de la Justice, Astoria"
+              },
+              "dpo": {
+                "label": "Délégué à la protection des données",
+                "value": "dpo@justice.gouv.aor"
+              }
+            }
+          },
+          "donnees": {
+            "kicker": "Données collectées",
+            "title": "Données collectées",
+            "lead": "Les catégories de données traitées par le portail.",
+            "bullets": {
+              "b1": "Les données de navigation (pages consultées, provenance).",
+              "b2": "Les données saisies dans les formulaires de contact.",
+              "b3": "Les données d'authentification, lorsque vous utilisez le service.",
+              "b4": "Les données de mesure d'audience, si vous acceptez les cookies."
+            }
+          },
+          "finalites": {
+            "kicker": "Finalités",
+            "title": "Finalités et bases légales",
+            "lead": "Pourquoi nous traitons vos données et sur quel fondement.",
+            "paragraphs": {
+              "p1": "Vos données sont traitées pour fournir les services du portail, répondre à vos demandes et assurer la sécurité du service.",
+              "p2": "Chaque traitement repose sur une base légale prévue par la loi, indiquée dans les mentions de chaque formulaire."
+            }
+          },
+          "conservation": {
+            "kicker": "Conservation",
+            "title": "Durée de conservation",
+            "lead": "Combien de temps vos données sont conservées.",
+            "facts": {
+              "duree": {
+                "label": "Durée",
+                "value": "Selon la nature du traitement, de quelques mois à plusieurs années"
+              },
+              "critere": {
+                "label": "Critère",
+                "value": "La durée légale applicable à chaque traitement"
+              }
+            }
+          },
+          "droits": {
+            "kicker": "Vos droits",
+            "title": "Vos droits",
+            "lead": "Vous disposez de droits sur vos données personnelles.",
+            "bullets": {
+              "b1": "Le droit d'accès et de copie de vos données.",
+              "b2": "Le droit de rectification des données inexactes.",
+              "b3": "Le droit à l'effacement de vos données.",
+              "b4": "Le droit d'opposition au traitement de vos données.",
+              "b5": "Le droit à la portabilité de vos données."
+            }
+          },
+          "cookies": {
+            "kicker": "Cookies",
+            "title": "Cookies et mesure d'audience",
+            "lead": "La politique du portail en matière de cookies.",
+            "paragraphs": {
+              "p1": "Les seuls traceurs déposés sont ceux de la mesure d'audience, sous réserve de votre consentement."
+            },
+            "notice": "Vous pouvez à tout moment modifier vos choix.",
+            "cta": "Gérer mes cookies"
+          }
+        }
+      },
+      "terms": {
+        "hero": {
+          "kicker": "Conditions d'utilisation",
+          "title": "Conditions d'utilisation",
+          "lead": "Les règles d'utilisation du portail du ministère de la Justice.",
+          "notice": "La consultation du portail implique l'acceptation des présentes conditions."
+        },
+        "sections": {
+          "objet": {
+            "kicker": "Objet",
+            "title": "Objet",
+            "lead": "Ce que régissent les présentes conditions.",
+            "paragraphs": {
+              "p1": "Les présentes conditions encadrent l'utilisation du portail justice.gouv.aor.",
+              "p2": "Le portail est un service public d'information et d'orientation."
+            }
+          },
+          "utilisation": {
+            "kicker": "Utilisation",
+            "title": "Utilisation du portail",
+            "lead": "Les règles applicables à votre navigation.",
+            "bullets": {
+              "b1": "Le portail est accessible gratuitement à tous.",
+              "b2": "L'utilisation du portail suppose le respect de la loi.",
+              "b3": "Toute tentative de perturbation du service est interdite.",
+              "b4": "Les informations publiées ne dispensent pas de consulter les textes officiels."
+            }
+          },
+          "contenus": {
+            "kicker": "Contenus",
+            "title": "Contenus et données",
+            "lead": "Le régime des contenus publiés sur le portail.",
+            "paragraphs": {
+              "p1": "Les contenus du portail sont réutilisables dans les conditions prévues par la licence applicable.",
+              "p2": "Les contenus protégés par des droits de tiers restent soumis à ces droits."
+            }
+          },
+          "responsabilite": {
+            "kicker": "Responsabilité",
+            "title": "Responsabilité",
+            "lead": "La responsabilité du ministère à l'égard des contenus publiés.",
+            "paragraphs": {
+              "p1": "Le ministère veille à l'exactitude des informations publiées et les met à jour régulièrement.",
+              "p2": "Le ministère ne peut être tenu responsable des dommages résultant d'une utilisation du portail."
+            }
+          },
+          "liens": {
+            "kicker": "Liens",
+            "title": "Liens",
+            "lead": "Les liens proposés vers d'autres services.",
+            "paragraphs": {
+              "p1": "Les liens vers des sites externes ne sauraient engager la responsabilité du ministère."
+            }
+          },
+          "modification": {
+            "kicker": "Modification",
+            "title": "Modification des conditions",
+            "lead": "Les conditions peuvent être mises à jour.",
+            "paragraphs": {
+              "p1": "Les présentes conditions peuvent être modifiées à tout moment ; la version applicable est celle en vigueur lors de votre visite."
+            },
+            "notice": "Toute modification est publiée sur cette page."
+          }
+        }
+      },
+      "cookies": {
+        "hero": {
+          "kicker": "Cookies",
+          "title": "Gestion des cookies",
+          "lead": "Les cookies déposés par le portail et les choix qui vous sont proposés.",
+          "notice": "Votre consentement est libre et révocable à tout moment."
+        },
+        "sections": {
+          "definition": {
+            "kicker": "Définition",
+            "title": "Qu'est-ce qu'un cookie ?",
+            "lead": "Le rôle des cookies sur un site internet.",
+            "paragraphs": {
+              "p1": "Un cookie est un petit fichier déposé sur votre appareil lors de la consultation d'un site.",
+              "p2": "Il permet de conserver des informations de navigation pour améliorer le service."
+            }
+          },
+          "cookiesDeposes": {
+            "kicker": "Cookies déposés",
+            "title": "Les cookies utilisés par le portail",
+            "lead": "Le détail des cookies et leurs finalités.",
+            "table": {
+              "caption": "Les cookies déposés sur le portail",
+              "headers": {
+                "0": "Cookie",
+                "1": "Finalité",
+                "2": "Durée"
+              },
+              "rows": {
+                "0": [
+                  "_ga",
+                  "Mesure d'audience",
+                  "13 mois"
+                ],
+                "1": [
+                  "_consent",
+                  "Mémorisation de votre choix",
+                  "6 mois"
+                ],
+                "2": [
+                  "session",
+                  "Session du visiteur",
+                  "Session"
+                ],
+                "3": [
+                  "pref",
+                  "Préférences d'affichage",
+                  "1 an"
+                ]
+              },
+              "note": "Les cookies de mesure d'audience ne sont déposés qu'avec votre consentement."
+            }
+          },
+          "gestion": {
+            "kicker": "Gestion",
+            "title": "Gérer vos cookies",
+            "lead": "Les moyens de contrôler le dépôt des cookies.",
+            "bullets": {
+              "b1": "Vous pouvez accepter ou refuser les cookies de mesure d'audience.",
+              "b2": "Vous pouvez configurer votre navigateur pour refuser les cookies.",
+              "b3": "Vous pouvez effacer les cookies déjà déposés."
+            },
+            "notice": "Le refus des cookies n'altère pas votre accès aux informations du portail."
+          }
+        }
+      }
+    }
+  },
+  "nav": {
+    "primary": {
+      "justice": "Justice",
+      "droit": "Droit",
+      "juridictions": "Juridictions",
+      "procedures": "Procédures",
+      "professionnels": "Professionnels",
+      "donneesRessources": "Données & ressources",
+      "leMinistere": "Le Ministère"
+    },
+    "panel": {
+      "justice": {
+        "title": "Justice",
+        "text": "L'organisation de la justice, la politique judiciaire, l'accès au droit et les garanties des justiciables.",
+        "allLink": "Tout sur la Justice",
+        "organisation": {
+          "title": "Organisation",
+          "systemeJudiciaire": "Système judiciaire",
+          "organisationDeLaJustice": "Organisation de la Justice",
+          "principesFondamentaux": "Principes fondamentaux",
+          "reformeDeLaJustice": "Réforme de la Justice"
+        },
+        "politiqueJudiciaire": {
+          "title": "Politique judiciaire",
+          "priorites": "Priorités",
+          "programmes": "Programmes",
+          "reformes": "Réformes",
+          "evaluationDesPolitiques": "Évaluation des politiques"
+        },
+        "accesALaJustice": {
+          "title": "Accès à la justice",
+          "aideJuridictionnelle": "Aide juridictionnelle",
+          "mediation": "Médiation",
+          "conciliation": "Conciliation",
+          "accesAuxServicesJudiciaires": "Accès aux services judiciaires"
+        },
+        "droits": {
+          "title": "Droits",
+          "droitsFondamentaux": "Droits fondamentaux",
+          "droitsDesVictimes": "Droits des victimes",
+          "droitsDesPersonnesMisesEnCause": "Droits des personnes mises en cause",
+          "protectionDesPersonnesVulnerables": "Protection des personnes vulnérables"
+        }
+      },
+      "droit": {
+        "title": "Droit",
+        "text": "Les textes, les codes, la jurisprudence et les outils de recherche juridique.",
+        "allLink": "Tout sur le droit",
+        "textesJuridiques": {
+          "title": "Textes juridiques",
+          "constitution": "Constitution",
+          "lois": "Lois",
+          "decrets": "Décrets",
+          "reglements": "Règlements"
+        },
+        "codes": {
+          "title": "Codes",
+          "codeCivil": "Code civil",
+          "codePenal": "Code pénal",
+          "codeDeProcedure": "Code de procédure",
+          "autresCodes": "Autres codes"
+        },
+        "jurisprudence": {
+          "title": "Jurisprudence",
+          "decisions": "Décisions",
+          "jurisprudenceConstitutionnelle": "Jurisprudence constitutionnelle",
+          "jurisprudenceJudiciaire": "Jurisprudence judiciaire",
+          "jurisprudenceAdministrative": "Jurisprudence administrative"
+        },
+        "rechercheJuridique": {
+          "title": "Recherche juridique",
+          "rechercheDansLesTextes": "Recherche dans les textes",
+          "rechercheParArticle": "Recherche par article",
+          "rechercheParDomaine": "Recherche par domaine",
+          "rechercheAvancee": "Recherche avancée"
+        }
+      },
+      "juridictions": {
+        "title": "Juridictions",
+        "text": "L'ordre judiciaire, les tribunaux, les juridictions spécialisées et les audiences.",
+        "allLink": "Tout sur les juridictions",
+        "ordreJudiciaire": {
+          "title": "Ordre judiciaire",
+          "courSupreme": "Cour suprême",
+          "coursDAppel": "Cours d'appel",
+          "tribunaux": "Tribunaux",
+          "ministerePublic": "Ministère public"
+        },
+        "tribunaux": {
+          "title": "Tribunaux",
+          "tribunauxCivils": "Tribunaux civils",
+          "tribunauxPenaux": "Tribunaux pénaux",
+          "tribunauxAdministratifs": "Tribunaux administratifs",
+          "annuaireDesTribunaux": "Annuaire des tribunaux"
+        },
+        "juridictionsSpecialisees": {
+          "title": "Juridictions spécialisées",
+          "juridictionsCommerciales": "Juridictions commerciales",
+          "juridictionsFamiliales": "Juridictions familiales",
+          "juridictionsDuTravail": "Juridictions du travail",
+          "autresJuridictionsSpecialisees": "Autres juridictions spécialisées"
+        },
+        "audiences": {
+          "title": "Audiences",
+          "calendrierDesAudiences": "Calendrier des audiences",
+          "audiencesPubliques": "Audiences publiques",
+          "informationsPratiques": "Informations pratiques",
+          "rechercheDAudience": "Recherche d'une audience"
+        }
+      },
+      "procedures": {
+        "title": "Procédures",
+        "text": "Les procédures civiles, pénales et administratives et les démarches des justiciables.",
+        "allLink": "Tout sur les procédures",
+        "civil": {
+          "title": "Civil",
+          "litigesCivils": "Litiges civils",
+          "famille": "Famille",
+          "successions": "Successions",
+          "responsabilite": "Responsabilité"
+        },
+        "penal": {
+          "title": "Pénal",
+          "plainte": "Plainte",
+          "enquete": "Enquête",
+          "procesPenal": "Procès pénal",
+          "droitsDesVictimes": "Droits des victimes"
+        },
+        "administratif": {
+          "title": "Administratif",
+          "recoursAdministratif": "Recours administratif",
+          "recoursJuridictionnel": "Recours juridictionnel",
+          "contentieuxAdministratif": "Contentieux administratif",
+          "executionDesDecisions": "Exécution des décisions"
+        },
+        "demarches": {
+          "title": "Démarches",
+          "deposerUneDemande": "Déposer une demande",
+          "consulterUnFormulaire": "Consulter un formulaire",
+          "suivreUneProcedure": "Suivre une procédure",
+          "obtenirUnDocument": "Obtenir un document"
+        }
+      },
+      "professionnels": {
+        "title": "Professionnels",
+        "text": "La magistrature, les auxiliaires de justice, les carrières et la formation.",
+        "allLink": "Tout sur les professionnels",
+        "magistrature": {
+          "title": "Magistrature",
+          "magistrats": "Magistrats",
+          "parquet": "Parquet",
+          "statut": "Statut",
+          "deontologie": "Déontologie"
+        },
+        "auxiliairesDeJustice": {
+          "title": "Auxiliaires de justice",
+          "avocats": "Avocats",
+          "greffiers": "Greffiers",
+          "notaires": "Notaires",
+          "expertsJudiciaires": "Experts judiciaires"
+        },
+        "carrieres": {
+          "title": "Carrières",
+          "emplois": "Emplois",
+          "concours": "Concours",
+          "recrutement": "Recrutement",
+          "mobilite": "Mobilité"
+        },
+        "formation": {
+          "title": "Formation",
+          "formationJudiciaire": "Formation judiciaire",
+          "formationContinue": "Formation continue",
+          "ecoleDeLaMagistrature": "École de la magistrature",
+          "ressourcesProfessionnelles": "Ressources professionnelles"
+        }
+      },
+      "donneesRessources": {
+        "title": "Données & ressources",
+        "text": "Les décisions, les statistiques, les publications et les données ouvertes du ministère.",
+        "allLink": "Tout sur les données et ressources",
+        "decisions": {
+          "title": "Décisions",
+          "decisionsJudiciaires": "Décisions judiciaires",
+          "decisionsConstitutionnelles": "Décisions constitutionnelles",
+          "decisionsAdministratives": "Décisions administratives",
+          "rechercheDeDecisions": "Recherche de décisions"
+        },
+        "statistiques": {
+          "title": "Statistiques",
+          "activiteJudiciaire": "Activité judiciaire",
+          "justicePenale": "Justice pénale",
+          "justiceCivile": "Justice civile",
+          "statistiquesAnnuelles": "Statistiques annuelles"
+        },
+        "publications": {
+          "title": "Publications",
+          "rapports": "Rapports",
+          "etudes": "Études",
+          "guides": "Guides",
+          "archives": "Archives"
+        },
+        "donneesOuvertes": {
+          "title": "Données ouvertes",
+          "jeuxDeDonnees": "Jeux de données",
+          "api": "API",
+          "reutilisation": "Réutilisation",
+          "documentation": "Documentation"
+        }
+      },
+      "leMinistere": {
+        "title": "Le Ministère",
+        "text": "L'institution, son organisation, sa transparence et ses actualités.",
+        "allLink": "Tout sur le Ministère",
+        "institution": {
+          "title": "Institution",
+          "leMinistre": "Le ministre",
+          "missions": "Missions",
+          "organisation": "Organisation",
+          "organigramme": "Organigramme"
+        },
+        "administration": {
+          "title": "Administration",
+          "servicesDuMinistere": "Services du ministère",
+          "administrationJudiciaire": "Administration judiciaire",
+          "budget": "Budget",
+          "marchesPublics": "Marchés publics"
+        },
+        "transparence": {
+          "title": "Transparence",
+          "budgetEtFinances": "Budget et finances",
+          "donneesPubliques": "Données publiques",
+          "rapportsDActivite": "Rapports d'activité",
+          "deontologie": "Déontologie"
+        },
+        "actualitesEtContact": {
+          "title": "Actualités & contact",
+          "actualites": "Actualités",
+          "communiques": "Communiqués",
+          "agenda": "Agenda",
+          "contact": "Contact"
+        }
+      }
+    },
+    "columns": {
+      "justice": "Justice",
+      "droit": "Droit",
+      "juridictions": "Juridictions",
+      "procedures": "Procédures",
+      "professionnels": "Professionnels",
+      "donneesRessources": "Données & ressources",
+      "leMinistere": "Le Ministère"
+    }
+  }
+}

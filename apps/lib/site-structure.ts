@@ -1,5 +1,6 @@
 /**
- * URL structure of the public portal of the Banque centrale d'Astoria (BCA).
+ * URL structure of the public portal of the Ministry of Justice of Astoria
+ * (`justice.gouv.aor`).
  *
  * Hrefs are locale-agnostic pathnames: the next-intl Link (registered as the
  * ADS link renderer) prefixes the active locale automatically. Labels are
@@ -9,50 +10,52 @@
  * Architecture of the navigation:
  *
  *   primaryNavigation  → the seven entries of the portal. Each entry opens a
- *                        mega-menu panel structured in four themes of four
+ *                        mega-menu panel structured in four sections of four
  *                        links:
- *                            7 entrées × 4 thèmes × 4 liens
+ *                            7 entrées × 4 sections × 4 liens = 112 liens
+ *
+ * This file is the single source of truth of the portal navigation: the
+ * header (desktop mega-menus and mobile drawer), the sitemap and the footer
+ * all derive their markup from `primaryNavigation`, so adding or renaming a
+ * theme, section or link never requires rewriting a component — it only
+ * requires editing this file (and the matching message keys).
  *
  * The information architecture reflects the institutional perimeter of a
- * central bank — not that of a ministry. Six entries cover the public policy
- * fields of the BCA (monnaie, politique monétaire, banques, marchés
- * financiers, paiements, système financier); a seventh, distinct entry,
- * “La Banque centrale”, presents the institution itself.
+ * ministry of justice. Six entries cover the public-policy fields of the
+ * justice system (Justice, Droit, Juridictions, Procédures, Professionnels,
+ * Données & ressources); a seventh, distinct entry, “Le Ministère”, presents
+ * the institution itself.
  *
- *   Monnaie              → comprendre : la monnaie astorienne, billets, pièces, circulation
- *   Politique monétaire  → décider   : décisions, taux directeurs, instruments, publications
- *   Banques              → encadrer  : établissements, agréments, réglementation, supervision
- *   Marchés financiers   → suivre    : marchés, stabilité, régulation, données
- *   Paiements            → régler    : systèmes de paiement, interbancaire, règlement, innovation
- *   Système financier    → stabiliser : liquidité, réserves, infrastructures, stabilité systémique
- *   La Banque centrale   → incarner  : présentation, gouvernance, organisation, carrières
+ *   Justice              → l'organisation, la politique judiciaire, l'accès à la justice et les droits
+ *   Droit                → les textes, les codes, la jurisprudence et la recherche juridique
+ *   Juridictions         → l'ordre judiciaire, les tribunaux, les juridictions spécialisées et les audiences
+ *   Procédures           → les procédures civiles, pénales, administratives et les démarches
+ *   Professionnels       → la magistrature, les auxiliaires de justice, les carrières et la formation
+ *   Données & ressources → les décisions, les statistiques, les publications et les données ouvertes
+ *   Le Ministère         → l'institution, son administration, sa transparence et ses actualités
  *
- * `Rechercher` and `Se connecter` are transversal functions of the platform
- * (search, MyGouv identity), not categories of the catalogue: they live in
- * the header, outside the primary navigation.
+ * The structure is validated both at compile time (the tuple types below
+ * enforce exactly 7 themes × 4 sections × 4 links) and at runtime
+ * (`validateNavigationStructure`), so a malformed navigation fails the build.
  *
- * The operational banking dimension of the BCA (banque de l'État,
- * établissements financiers, système de paiement, services bancaires
- * autorisés) is deliberately kept out of the seven editorial entries: it is an
- * operational interface, prepared in `platformNav` below, that can ship later
- * as a distinct “Services / Plateforme BCA” space without reshaping the header
- * architecture.
- *
- * Everything is configuration-driven: the header and the footer derive their
- * markup from this array, so adding a domain/theme/link later never requires
- * rewriting a component.
+ * Hrefs follow the URL plan of the portal; several point to pages being
+ * published and will resolve as soon as those sections ship.
  */
 export const PORTAL_HOME = "/";
 
-/** The seven entries of the portal — both `nav.primary` and `footer.columns` keys. */
+/**
+ * The seven entries of the portal — both `nav.primary` and `footer.columns`
+ * keys. The six first entries are the functional navigation; the seventh,
+ * `leMinistere`, is the distinct institutional entry.
+ */
 export type PrimaryNavKey =
-  | "monnaie"
-  | "politiqueMonetaire"
-  | "banques"
-  | "marchesFinanciers"
-  | "paiements"
-  | "systemeFinancier"
-  | "banqueCentrale";
+  | "justice"
+  | "droit"
+  | "juridictions"
+  | "procedures"
+  | "professionnels"
+  | "donneesRessources"
+  | "leMinistere";
 
 /** A destination inside a mega-menu panel; its label is a `nav.panel` message key. */
 export type NavigationLink = {
@@ -61,26 +64,48 @@ export type NavigationLink = {
 };
 
 /**
- * A theme of a navigation section. In the mega-menu panel it heads one of the
- * four columns (`labelKey` → `nav.panel.<section>.<theme>.title`); in the
+ * A section of a navigation theme. In the mega-menu panel it heads one of the
+ * four columns (`labelKey` → `nav.panel.<theme>.<section>.title`); in the
  * footer it becomes a destination of the domain column. It carries the four
- * destinations of the theme.
+ * destinations of the section.
  */
 export type NavigationItem = NavigationLink & {
-  /** Related destinations nested under this theme. */
-  links: ReadonlyArray<NavigationLink>;
+  /** Related destinations nested under this section. */
+  links: NavigationLinks;
 };
+
+/**
+ * The four destinations of a section. The tuple type is the compile-time
+ * guarantee that no section exposes anything other than exactly 4 links.
+ */
+export type NavigationLinks = readonly [
+  NavigationLink,
+  NavigationLink,
+  NavigationLink,
+  NavigationLink,
+];
+
+/**
+ * The four sections of a theme. The tuple type is the compile-time guarantee
+ * that no theme exposes anything other than exactly 4 sections.
+ */
+export type NavigationItems = readonly [
+  NavigationItem,
+  NavigationItem,
+  NavigationItem,
+  NavigationItem,
+];
 
 /**
  * One top-level entry of the Government Header navigation.
  *
  * Navigation principle (info.gouv.fr-inspired, adapted to Astoria): the header
- * is organised around the missions of the central bank and the understanding
- * of the monetary and financial system — not around a ministry's internal
+ * is organised around the missions of the ministry of justice and the
+ * understanding of the justice system — not around a ministry's internal
  * structure. Each entry opens a mega-menu panel composed of
  *  - a leader band: the entry name, a one-line description and the main
- *    action of the section (“Tout sur la monnaie”, …),
- *  - four themes, each headed by its title and followed by its four
+ *    action of the section (“Tout sur la Justice”, …),
+ *  - four sections, each headed by its title and followed by its four
  *    destinations.
  *
  * Top-level labels resolve under `nav.primary` (`labelKey`), panel content
@@ -98,8 +123,8 @@ export type NavigationSection = {
     paragraphKey: string;
     link: NavigationLink;
   };
-  /** The four themes of the section, each with its four links. */
-  primaryItems: ReadonlyArray<NavigationItem>;
+  /** The four sections of the theme, each with its four links. */
+  primaryItems: NavigationItems;
 };
 
 export type FooterColumn = {
@@ -109,13 +134,13 @@ export type FooterColumn = {
 };
 
 export const sectionPaths = {
-  monnaie: "/monnaie",
-  politiqueMonetaire: "/politique-monetaire",
-  banques: "/banques",
-  marchesFinanciers: "/marches-financiers",
-  paiements: "/paiements",
-  systemeFinancier: "/systeme-financier",
-  banqueCentrale: "/la-banque-centrale",
+  justice: "/justice",
+  droit: "/droit",
+  juridictions: "/juridictions",
+  procedures: "/procedures",
+  professionnels: "/professionnels",
+  donneesRessources: "/donnees-et-ressources",
+  leMinistere: "/le-ministere",
 } as const;
 
 export const legalPaths = {
@@ -128,474 +153,493 @@ export const legalPaths = {
 
 export const searchPath = "/search";
 
-/** Root of the future operational “Services / Plateforme BCA” space. */
-export const platformPath = "/services";
-
 /** DOM ids used as skip-link targets. */
 export const pageAnchors = {
   content: "main-content",
   footer: "main-footer",
 } as const;
 
-/**
- * Operational interface of the BCA, distinct from the seven editorial entries
- * of the portal. A central bank is also a bank: the State's banker, the
- * operator of the payment and settlement infrastructures and the supervisor
- * of the banking system. These services are *not* a public-policy subject of
- * the header — they are an operational platform for a restricted audience
- * (the State, credit institutions, payment operators).
- *
- * `platformNav` is the extension point: when the platform ships, promote one
- * of the spaces below to a dedicated entry or build a separate “Services /
- * Plateforme BCA” area on `platformPath` — without reshaping the six subjects
- * and the “La Banque centrale” entry above.
- */
-export const platformNav: ReadonlyArray<NavigationItem> = [
-  {
-    labelKey: "platform.banqueEtat.title",
-    href: `${platformPath}/banque-de-l-etat`,
-    links: [
-      { labelKey: "platform.banqueEtat.compteEtat", href: `${platformPath}/banque-de-l-etat/compte-de-l-etat` },
-      { labelKey: "platform.banqueEtat.tresorerieEtat", href: `${platformPath}/banque-de-l-etat/tresorerie-de-l-etat` },
-      { labelKey: "platform.banqueEtat.emissionsDette", href: `${platformPath}/banque-de-l-etat/emissions-de-dette` },
-      { labelKey: "platform.banqueEtat.gestionReserves", href: `${platformPath}/banque-de-l-etat/gestion-des-reserves` },
-    ],
-  },
-  {
-    labelKey: "platform.etablissementsFinanciers.title",
-    href: `${platformPath}/etablissements-financiers`,
-    links: [
-      { labelKey: "platform.etablissementsFinanciers.acces", href: `${platformPath}/etablissements-financiers/acces` },
-      { labelKey: "platform.etablissementsFinanciers.comptes", href: `${platformPath}/etablissements-financiers/comptes` },
-      { labelKey: "platform.etablissementsFinanciers.reserveObligatoire", href: `${platformPath}/etablissements-financiers/reserve-obligatoire` },
-      { labelKey: "platform.etablissementsFinanciers.refinancement", href: `${platformPath}/etablissements-financiers/refinancement` },
-    ],
-  },
-  {
-    labelKey: "platform.systemePaiement.title",
-    href: `${platformPath}/systeme-de-paiement`,
-    links: [
-      { labelKey: "platform.systemePaiement.participants", href: `${platformPath}/systeme-de-paiement/participants` },
-      { labelKey: "platform.systemePaiement.reglements", href: `${platformPath}/systeme-de-paiement/reglements` },
-      { labelKey: "platform.systemePaiement.standards", href: `${platformPath}/systeme-de-paiement/standards` },
-      { labelKey: "platform.systemePaiement.surveillance", href: `${platformPath}/systeme-de-paiement/surveillance` },
-    ],
-  },
-  {
-    labelKey: "platform.servicesAutorises.title",
-    href: `${platformPath}/services-bancaires-autorises`,
-    links: [
-      { labelKey: "platform.servicesAutorises.liste", href: `${platformPath}/services-bancaires-autorises/liste` },
-      { labelKey: "platform.servicesAutorises.demande", href: `${platformPath}/services-bancaires-autorises/demande` },
-      { labelKey: "platform.servicesAutorises.suivi", href: `${platformPath}/services-bancaires-autorises/suivi` },
-      { labelKey: "platform.servicesAutorises.documentation", href: `${platformPath}/services-bancaires-autorises/documentation` },
-    ],
-  },
-];
+/** Structural guard: the navigation must stay a fixed 7 × 4 × 4 grid. */
+export const navigationShape = {
+  themes: 7,
+  sectionsPerTheme: 4,
+  linksPerSection: 4,
+} as const;
 
 /**
- * Main navigation of the Government Header of the Banque centrale d'Astoria —
- * the permanent information architecture of the portal, organised in seven
- * entries:
+ * Runtime validation of the navigation structure. Returns the list of
+ * problems found (empty when the structure is valid):
+ *  - the portal must expose exactly 7 themes;
+ *  - each theme must contain exactly 4 sections;
+ *  - each section must contain exactly 4 links;
+ *  - every link must carry a non-empty, absolute-path destination.
  *
- *   Monnaie              → comprendre : la monnaie astorienne, billets et pièces, circulation
- *   Politique monétaire  → décider   : décisions, taux directeurs, instruments, publications
- *   Banques              → encadrer  : établissements, agréments et licences, réglementation, supervision
- *   Marchés financiers   → suivre    : marchés, stabilité financière, régulation, données
- *   Paiements            → régler    : systèmes de paiement, interbancaire, règlement, innovation
- *   Système financier    → stabiliser : liquidité, réserves, infrastructures, stabilité systémique
- *   La Banque centrale   → incarner  : présentation, gouvernance, organisation, carrières
+ * The same invariants are enforced at compile time by the tuple types
+ * (`NavigationItems`, `NavigationLinks` and the seven-tuple below).
+ */
+export function validateNavigationStructure(
+  navigation: ReadonlyArray<NavigationSection> = primaryNavigation
+): string[] {
+  const problems: string[] = [];
+
+  if (navigation.length !== navigationShape.themes) {
+    problems.push(
+      `La navigation doit comporter exactement ${navigationShape.themes} thèmes, or elle en compte ${navigation.length}.`
+    );
+  }
+
+  for (const section of navigation) {
+    if (section.primaryItems.length !== navigationShape.sectionsPerTheme) {
+      problems.push(
+        `Le thème « ${section.labelKey} » doit contenir exactement ${navigationShape.sectionsPerTheme} sections, or il en compte ${section.primaryItems.length}.`
+      );
+    }
+
+    for (const item of section.primaryItems) {
+      if (item.links.length !== navigationShape.linksPerSection) {
+        problems.push(
+          `La section « ${item.labelKey} » doit contenir exactement ${navigationShape.linksPerSection} liens, or elle en compte ${item.links.length}.`
+        );
+      }
+
+      for (const link of item.links) {
+        if (!link.href || !link.href.startsWith("/")) {
+          problems.push(
+            `Le lien « ${link.labelKey} » (« ${item.labelKey} ») n'a pas de destination valide : « ${link.href} ».`
+          );
+        }
+      }
+    }
+  }
+
+  return problems;
+}
+
+/**
+ * Throws when the navigation structure is malformed. Called at module load so
+ * a structural error fails the build immediately instead of shipping a broken
+ * header. Satisfies the contract: 7 thèmes × 4 sections × 4 liens = 112 liens.
+ */
+function assertNavigationStructureValid(): void {
+  const problems = validateNavigationStructure();
+  if (problems.length > 0) {
+    throw new Error(
+      `Structure de navigation invalide :\n- ${problems.join("\n- ")}`
+    );
+  }
+}
+
+/** Convenience: the total number of destinations exposed by the navigation. */
+export function countNavigationLinks(
+  navigation: ReadonlyArray<NavigationSection> = primaryNavigation
+): number {
+  return navigation.reduce(
+    (total, section) =>
+      total +
+      section.primaryItems.reduce(
+        (sectionTotal, item) => sectionTotal + item.links.length,
+        0
+      ),
+    0
+  );
+}
+
+/**
+ * Main navigation of the Government Header of the Ministry of Justice of
+ * Astoria — the permanent information architecture of the portal, organised
+ * in seven entries:
  *
- * The six first entries present the *public-policy* perimeter of the BCA; the
- * seventh, distinct, presents the institution itself — the counterpart of
- * “Le Ministère” on the ministry portals. The BCA is *not* the sole
- * supervisor of the financial system: where the Astorian institutional model
- * separates supervision between the BCA and the AMSF, the navigation reflects
- * that split rather than claiming an exclusive mandate.
+ *   Justice              → comprendre : l'organisation, la politique judiciaire, l'accès à la justice, les droits
+ *   Droit                → consulter : les textes, les codes, la jurisprudence, la recherche juridique
+ *   Juridictions         → trouver   : l'ordre judiciaire, les tribunaux, les juridictions spécialisées, les audiences
+ *   Procédures           → agir      : les procédures civiles, pénales, administratives, les démarches
+ *   Professionnels       → exercer   : la magistrature, les auxiliaires de justice, les carrières, la formation
+ *   Données & ressources → connaître : les décisions, les statistiques, les publications, les données ouvertes
+ *   Le Ministère         → incarner  : l'institution, l'administration, la transparence, les actualités
  *
- * Each entry opens a mega-menu panel with a leader band and four themes — each
- * theme headed by its title and followed by its four destinations. The panel
- * is not the sitemap of the portal; it exposes the destinations that matter to
- * the visitor journey. The structure is configuration-driven: adding a section
- * only means adding an entry here (and the matching messages).
+ * The six first entries present the *public-policy* perimeter of the ministry;
+ * the seventh, distinct, presents the institution itself.
  *
- * The operational banking interface is kept out of this editorial structure:
- * see `platformNav` for the future “Services / Plateforme BCA” space.
- *
- * Hrefs follow the URL plan of the portal; several point to pages being
- * published and will resolve as soon as those sections ship.
+ * Each entry opens a mega-menu panel with a leader band and four sections —
+ * each section headed by its title and followed by its four destinations. The
+ * panel is not the sitemap of the portal; it exposes the destinations that
+ * matter to the visitor journey. The structure is configuration-driven and
+ * validated: adding a section only means adding an entry here (and the
+ * matching messages).
  */
 export const primaryNavigation: ReadonlyArray<NavigationSection> = [
   {
     type: "megaMenu",
-    labelKey: "monnaie",
-    href: sectionPaths.monnaie,
+    labelKey: "justice",
+    href: sectionPaths.justice,
     leader: {
-      titleKey: "monnaie.title",
-      paragraphKey: "monnaie.text",
-      link: { labelKey: "monnaie.allLink", href: sectionPaths.monnaie },
+      titleKey: "justice.title",
+      paragraphKey: "justice.text",
+      link: { labelKey: "justice.allLink", href: sectionPaths.justice },
     },
     primaryItems: [
       {
-        labelKey: "monnaie.laMonnaieAstorienne.title",
-        href: "/monnaie/la-monnaie-astorienne",
+        labelKey: "justice.organisation.title",
+        href: `${sectionPaths.justice}/organisation`,
         links: [
-          { labelKey: "monnaie.laMonnaieAstorienne.monnaieOfficielle", href: "/monnaie/la-monnaie-astorienne/monnaie-officielle" },
-          { labelKey: "monnaie.laMonnaieAstorienne.uniteMonetaire", href: "/monnaie/la-monnaie-astorienne/unite-monetaire" },
-          { labelKey: "monnaie.laMonnaieAstorienne.emisParLaBca", href: "/monnaie/la-monnaie-astorienne/emise-par-la-bca" },
-          { labelKey: "monnaie.laMonnaieAstorienne.pouvoirLiberalatoire", href: "/monnaie/la-monnaie-astorienne/pouvoir-liberatoire" },
+          { labelKey: "justice.organisation.systemeJudiciaire", href: `${sectionPaths.justice}/organisation/systeme-judiciaire` },
+          { labelKey: "justice.organisation.organisationDeLaJustice", href: `${sectionPaths.justice}/organisation/organisation-de-la-justice` },
+          { labelKey: "justice.organisation.principesFondamentaux", href: `${sectionPaths.justice}/organisation/principes-fondamentaux` },
+          { labelKey: "justice.organisation.reformeDeLaJustice", href: `${sectionPaths.justice}/organisation/reforme-de-la-justice` },
         ],
       },
       {
-        labelKey: "monnaie.billetsEtPieces.title",
-        href: "/monnaie/billets-et-pieces",
+        labelKey: "justice.politiqueJudiciaire.title",
+        href: `${sectionPaths.justice}/politique-judiciaire`,
         links: [
-          { labelKey: "monnaie.billetsEtPieces.billets", href: "/monnaie/billets-et-pieces/billets" },
-          { labelKey: "monnaie.billetsEtPieces.pieces", href: "/monnaie/billets-et-pieces/pieces" },
-          { labelKey: "monnaie.billetsEtPieces.caracteristiques", href: "/monnaie/billets-et-pieces/caracteristiques-et-securite" },
-          { labelKey: "monnaie.billetsEtPieces.authentification", href: "/monnaie/billets-et-pieces/authentifier-un-billet" },
+          { labelKey: "justice.politiqueJudiciaire.priorites", href: `${sectionPaths.justice}/politique-judiciaire/priorites` },
+          { labelKey: "justice.politiqueJudiciaire.programmes", href: `${sectionPaths.justice}/politique-judiciaire/programmes` },
+          { labelKey: "justice.politiqueJudiciaire.reformes", href: `${sectionPaths.justice}/politique-judiciaire/reformes` },
+          { labelKey: "justice.politiqueJudiciaire.evaluationDesPolitiques", href: `${sectionPaths.justice}/politique-judiciaire/evaluation-des-politiques` },
         ],
       },
       {
-        labelKey: "monnaie.circulationMonetaire.title",
-        href: "/monnaie/circulation-monetaire",
+        labelKey: "justice.accesALaJustice.title",
+        href: `${sectionPaths.justice}/acces-a-la-justice`,
         links: [
-          { labelKey: "monnaie.circulationMonetaire.emissions", href: "/monnaie/circulation-monetaire/emissions-monetaires" },
-          { labelKey: "monnaie.circulationMonetaire.circulation", href: "/monnaie/circulation-monetaire/circulation-de-la-monnaie" },
-          { labelKey: "monnaie.circulationMonetaire.retrait", href: "/monnaie/circulation-monetaire/retrait-des-billets" },
-          { labelKey: "monnaie.circulationMonetaire.fauxBillets", href: "/monnaie/circulation-monetaire/lutte-contre-la-fausse-monnaie" },
+          { labelKey: "justice.accesALaJustice.aideJuridictionnelle", href: `${sectionPaths.justice}/acces-a-la-justice/aide-juridictionnelle` },
+          { labelKey: "justice.accesALaJustice.mediation", href: `${sectionPaths.justice}/acces-a-la-justice/mediation` },
+          { labelKey: "justice.accesALaJustice.conciliation", href: `${sectionPaths.justice}/acces-a-la-justice/conciliation` },
+          { labelKey: "justice.accesALaJustice.accesAuxServicesJudiciaires", href: `${sectionPaths.justice}/acces-a-la-justice/acces-aux-services-judiciaires` },
         ],
       },
       {
-        labelKey: "monnaie.donneesMonetaires.title",
-        href: "/monnaie/donnees-monetaires",
+        labelKey: "justice.droits.title",
+        href: `${sectionPaths.justice}/droits`,
         links: [
-          { labelKey: "monnaie.donneesMonetaires.statistiques", href: "/monnaie/donnees-monetaires/statistiques-monetaires" },
-          { labelKey: "monnaie.donneesMonetaires.agregats", href: "/monnaie/donnees-monetaires/agregats-monetaires" },
-          { labelKey: "monnaie.donneesMonetaires.encours", href: "/monnaie/donnees-monetaires/encours-monetaires" },
-          { labelKey: "monnaie.donneesMonetaires.publications", href: "/monnaie/donnees-monetaires/publications" },
+          { labelKey: "justice.droits.droitsFondamentaux", href: `${sectionPaths.justice}/droits/droits-fondamentaux` },
+          { labelKey: "justice.droits.droitsDesVictimes", href: `${sectionPaths.justice}/droits/droits-des-victimes` },
+          { labelKey: "justice.droits.droitsDesPersonnesMisesEnCause", href: `${sectionPaths.justice}/droits/droits-des-personnes-mises-en-cause` },
+          { labelKey: "justice.droits.protectionDesPersonnesVulnerables", href: `${sectionPaths.justice}/droits/protection-des-personnes-vulnerables` },
         ],
       },
     ],
   },
   {
     type: "megaMenu",
-    labelKey: "politiqueMonetaire",
-    href: sectionPaths.politiqueMonetaire,
+    labelKey: "droit",
+    href: sectionPaths.droit,
     leader: {
-      titleKey: "politiqueMonetaire.title",
-      paragraphKey: "politiqueMonetaire.text",
-      link: { labelKey: "politiqueMonetaire.allLink", href: sectionPaths.politiqueMonetaire },
+      titleKey: "droit.title",
+      paragraphKey: "droit.text",
+      link: { labelKey: "droit.allLink", href: sectionPaths.droit },
     },
     primaryItems: [
       {
-        labelKey: "politiqueMonetaire.decisions.title",
-        href: "/politique-monetaire/decisions",
+        labelKey: "droit.textesJuridiques.title",
+        href: `${sectionPaths.droit}/textes-juridiques`,
         links: [
-          { labelKey: "politiqueMonetaire.decisions.dernieresDecisions", href: "/politique-monetaire/decisions/dernieres-decisions" },
-          { labelKey: "politiqueMonetaire.decisions.calendrier", href: "/politique-monetaire/decisions/calendrier-des-decisions" },
-          { labelKey: "politiqueMonetaire.decisions.communiques", href: "/politique-monetaire/decisions/communiques" },
-          { labelKey: "politiqueMonetaire.decisions.objectifs", href: "/politique-monetaire/decisions/objectifs-monetaires" },
+          { labelKey: "droit.textesJuridiques.constitution", href: `${sectionPaths.droit}/textes-juridiques/constitution` },
+          { labelKey: "droit.textesJuridiques.lois", href: `${sectionPaths.droit}/textes-juridiques/lois` },
+          { labelKey: "droit.textesJuridiques.decrets", href: `${sectionPaths.droit}/textes-juridiques/decrets` },
+          { labelKey: "droit.textesJuridiques.reglements", href: `${sectionPaths.droit}/textes-juridiques/reglements` },
         ],
       },
       {
-        labelKey: "politiqueMonetaire.tauxDirecteurs.title",
-        href: "/politique-monetaire/taux-directeurs",
+        labelKey: "droit.codes.title",
+        href: `${sectionPaths.droit}/codes`,
         links: [
-          { labelKey: "politiqueMonetaire.tauxDirecteurs.tauxDirecteur", href: "/politique-monetaire/taux-directeurs/taux-directeur" },
-          { labelKey: "politiqueMonetaire.tauxDirecteurs.facilites", href: "/politique-monetaire/taux-directeurs/facilites" },
-          { labelKey: "politiqueMonetaire.tauxDirecteurs.evolution", href: "/politique-monetaire/taux-directeurs/evolution-des-taux" },
-          { labelKey: "politiqueMonetaire.tauxDirecteurs.repercussion", href: "/politique-monetaire/taux-directeurs/repercussion-sur-le-credit" },
+          { labelKey: "droit.codes.codeCivil", href: `${sectionPaths.droit}/codes/code-civil` },
+          { labelKey: "droit.codes.codePenal", href: `${sectionPaths.droit}/codes/code-penal` },
+          { labelKey: "droit.codes.codeDeProcedure", href: `${sectionPaths.droit}/codes/code-de-procedure` },
+          { labelKey: "droit.codes.autresCodes", href: `${sectionPaths.droit}/codes/autres-codes` },
         ],
       },
       {
-        labelKey: "politiqueMonetaire.instrumentsMonetaires.title",
-        href: "/politique-monetaire/instruments-monetaires",
+        labelKey: "droit.jurisprudence.title",
+        href: `${sectionPaths.droit}/jurisprudence`,
         links: [
-          { labelKey: "politiqueMonetaire.instrumentsMonetaires.operations", href: "/politique-monetaire/instruments-monetaires/operations-de-marche" },
-          { labelKey: "politiqueMonetaire.instrumentsMonetaires.reserveObligatoire", href: "/politique-monetaire/instruments-monetaires/reserve-obligatoire" },
-          { labelKey: "politiqueMonetaire.instrumentsMonetaires.refinancement", href: "/politique-monetaire/instruments-monetaires/refinancement" },
-          { labelKey: "politiqueMonetaire.instrumentsMonetaires.transmission", href: "/politique-monetaire/instruments-monetaires/transmission-de-la-politique-monetaire" },
+          { labelKey: "droit.jurisprudence.decisions", href: `${sectionPaths.droit}/jurisprudence/decisions` },
+          { labelKey: "droit.jurisprudence.jurisprudenceConstitutionnelle", href: `${sectionPaths.droit}/jurisprudence/jurisprudence-constitutionnelle` },
+          { labelKey: "droit.jurisprudence.jurisprudenceJudiciaire", href: `${sectionPaths.droit}/jurisprudence/jurisprudence-judiciaire` },
+          { labelKey: "droit.jurisprudence.jurisprudenceAdministrative", href: `${sectionPaths.droit}/jurisprudence/jurisprudence-administrative` },
         ],
       },
       {
-        labelKey: "politiqueMonetaire.publications.title",
-        href: "/politique-monetaire/publications",
+        labelKey: "droit.rechercheJuridique.title",
+        href: `${sectionPaths.droit}/recherche-juridique`,
         links: [
-          { labelKey: "politiqueMonetaire.publications.rapports", href: "/politique-monetaire/publications/rapports" },
-          { labelKey: "politiqueMonetaire.publications.analyses", href: "/politique-monetaire/publications/analyses-economiques" },
-          { labelKey: "politiqueMonetaire.publications.projections", href: "/politique-monetaire/publications/projections" },
-          { labelKey: "politiqueMonetaire.publications.discours", href: "/politique-monetaire/publications/discours" },
+          { labelKey: "droit.rechercheJuridique.rechercheDansLesTextes", href: `${sectionPaths.droit}/recherche-juridique/recherche-dans-les-textes` },
+          { labelKey: "droit.rechercheJuridique.rechercheParArticle", href: `${sectionPaths.droit}/recherche-juridique/recherche-par-article` },
+          { labelKey: "droit.rechercheJuridique.rechercheParDomaine", href: `${sectionPaths.droit}/recherche-juridique/recherche-par-domaine` },
+          { labelKey: "droit.rechercheJuridique.rechercheAvancee", href: `${sectionPaths.droit}/recherche-juridique/recherche-avancee` },
         ],
       },
     ],
   },
   {
     type: "megaMenu",
-    labelKey: "banques",
-    href: sectionPaths.banques,
+    labelKey: "juridictions",
+    href: sectionPaths.juridictions,
     leader: {
-      titleKey: "banques.title",
-      paragraphKey: "banques.text",
-      link: { labelKey: "banques.allLink", href: sectionPaths.banques },
+      titleKey: "juridictions.title",
+      paragraphKey: "juridictions.text",
+      link: { labelKey: "juridictions.allLink", href: sectionPaths.juridictions },
     },
     primaryItems: [
       {
-        labelKey: "banques.etablissementsBancaires.title",
-        href: "/banques/etablissements-bancaires",
+        labelKey: "juridictions.ordreJudiciaire.title",
+        href: `${sectionPaths.juridictions}/ordre-judiciaire`,
         links: [
-          { labelKey: "banques.etablissementsBancaires.registre", href: "/banques/etablissements-bancaires/registre-des-etablissements-agrees" },
-          { labelKey: "banques.etablissementsBancaires.categories", href: "/banques/etablissements-bancaires/categories-d-etablissements" },
-          { labelKey: "banques.etablissementsBancaires.comptes", href: "/banques/etablissements-bancaires/comptes-des-etablissements" },
-          { labelKey: "banques.etablissementsBancaires.reclamations", href: "/banques/etablissements-bancaires/reclamations" },
+          { labelKey: "juridictions.ordreJudiciaire.courSupreme", href: `${sectionPaths.juridictions}/ordre-judiciaire/cour-supreme` },
+          { labelKey: "juridictions.ordreJudiciaire.coursDAppel", href: `${sectionPaths.juridictions}/ordre-judiciaire/cours-d-appel` },
+          { labelKey: "juridictions.ordreJudiciaire.tribunaux", href: `${sectionPaths.juridictions}/ordre-judiciaire/tribunaux` },
+          { labelKey: "juridictions.ordreJudiciaire.ministerePublic", href: `${sectionPaths.juridictions}/ordre-judiciaire/ministere-public` },
         ],
       },
       {
-        labelKey: "banques.agrementsEtLicences.title",
-        href: "/banques/agrements-et-licences",
+        labelKey: "juridictions.tribunaux.title",
+        href: `${sectionPaths.juridictions}/tribunaux`,
         links: [
-          { labelKey: "banques.agrementsEtLicences.conditions", href: "/banques/agrements-et-licences/conditions-d-agrement" },
-          { labelKey: "banques.agrementsEtLicences.demande", href: "/banques/agrements-et-licences/demande-d-agrement" },
-          { labelKey: "banques.agrementsEtLicences.licencesBancaires", href: "/banques/agrements-et-licences/licences-bancaires" },
-          { labelKey: "banques.agrementsEtLicences.retrait", href: "/banques/agrements-et-licences/retrait-d-agrement" },
+          { labelKey: "juridictions.tribunaux.tribunauxCivils", href: `${sectionPaths.juridictions}/tribunaux/tribunaux-civils` },
+          { labelKey: "juridictions.tribunaux.tribunauxPenaux", href: `${sectionPaths.juridictions}/tribunaux/tribunaux-penaux` },
+          { labelKey: "juridictions.tribunaux.tribunauxAdministratifs", href: `${sectionPaths.juridictions}/tribunaux/tribunaux-administratifs` },
+          { labelKey: "juridictions.tribunaux.annuaireDesTribunaux", href: `${sectionPaths.juridictions}/tribunaux/annuaire-des-tribunaux` },
         ],
       },
       {
-        labelKey: "banques.reglementationBancaire.title",
-        href: "/banques/reglementation-bancaire",
+        labelKey: "juridictions.juridictionsSpecialisees.title",
+        href: `${sectionPaths.juridictions}/juridictions-specialisees`,
         links: [
-          { labelKey: "banques.reglementationBancaire.textes", href: "/banques/reglementation-bancaire/textes-applicables" },
-          { labelKey: "banques.reglementationBancaire.prudentielles", href: "/banques/reglementation-bancaire/normes-prudentielles" },
-          { labelKey: "banques.reglementationBancaire.destineeAuxEtablissements", href: "/banques/reglementation-bancaire/informations-pour-les-etablissements" },
-          { labelKey: "banques.reglementationBancaire.amsf", href: "/banques/reglementation-bancaire/competences-de-l-amsf" },
+          { labelKey: "juridictions.juridictionsSpecialisees.juridictionsCommerciales", href: `${sectionPaths.juridictions}/juridictions-specialisees/juridictions-commerciales` },
+          { labelKey: "juridictions.juridictionsSpecialisees.juridictionsFamiliales", href: `${sectionPaths.juridictions}/juridictions-specialisees/juridictions-familiales` },
+          { labelKey: "juridictions.juridictionsSpecialisees.juridictionsDuTravail", href: `${sectionPaths.juridictions}/juridictions-specialisees/juridictions-du-travail` },
+          { labelKey: "juridictions.juridictionsSpecialisees.autresJuridictionsSpecialisees", href: `${sectionPaths.juridictions}/juridictions-specialisees/autres-juridictions-specialisees` },
         ],
       },
       {
-        labelKey: "banques.supervision.title",
-        href: "/banques/supervision",
+        labelKey: "juridictions.audiences.title",
+        href: `${sectionPaths.juridictions}/audiences`,
         links: [
-          { labelKey: "banques.supervision.roleBca", href: "/banques/supervision/role-de-la-bca" },
-          { labelKey: "banques.supervision.roleAmsf", href: "/banques/supervision/role-de-l-amsf" },
-          { labelKey: "banques.supervision.controles", href: "/banques/supervision/controles-et-inspections" },
-          { labelKey: "banques.supervision.sanctions", href: "/banques/supervision/sanctions-et-mesures" },
+          { labelKey: "juridictions.audiences.calendrierDesAudiences", href: `${sectionPaths.juridictions}/audiences/calendrier-des-audiences` },
+          { labelKey: "juridictions.audiences.audiencesPubliques", href: `${sectionPaths.juridictions}/audiences/audiences-publiques` },
+          { labelKey: "juridictions.audiences.informationsPratiques", href: `${sectionPaths.juridictions}/audiences/informations-pratiques` },
+          { labelKey: "juridictions.audiences.rechercheDAudience", href: `${sectionPaths.juridictions}/audiences/recherche-d-une-audience` },
         ],
       },
     ],
   },
   {
     type: "megaMenu",
-    labelKey: "marchesFinanciers",
-    href: sectionPaths.marchesFinanciers,
+    labelKey: "procedures",
+    href: sectionPaths.procedures,
     leader: {
-      titleKey: "marchesFinanciers.title",
-      paragraphKey: "marchesFinanciers.text",
-      link: { labelKey: "marchesFinanciers.allLink", href: sectionPaths.marchesFinanciers },
+      titleKey: "procedures.title",
+      paragraphKey: "procedures.text",
+      link: { labelKey: "procedures.allLink", href: sectionPaths.procedures },
     },
     primaryItems: [
       {
-        labelKey: "marchesFinanciers.marches.title",
-        href: "/marches-financiers/marches",
+        labelKey: "procedures.civil.title",
+        href: `${sectionPaths.procedures}/civil`,
         links: [
-          { labelKey: "marchesFinanciers.marches.fonctionnement", href: "/marches-financiers/marches/fonctionnement-des-marches" },
-          { labelKey: "marchesFinanciers.marches.infrastructures", href: "/marches-financiers/marches/infrastructures-de-marche" },
-          { labelKey: "marchesFinanciers.marches.surveillance", href: "/marches-financiers/marches/surveillance-des-marches" },
-          { labelKey: "marchesFinanciers.marches.interactionsAmsf", href: "/marches-financiers/marches/interactions-avec-l-amsf" },
+          { labelKey: "procedures.civil.litigesCivils", href: `${sectionPaths.procedures}/civil/litiges-civils` },
+          { labelKey: "procedures.civil.famille", href: `${sectionPaths.procedures}/civil/famille` },
+          { labelKey: "procedures.civil.successions", href: `${sectionPaths.procedures}/civil/successions` },
+          { labelKey: "procedures.civil.responsabilite", href: `${sectionPaths.procedures}/civil/responsabilite` },
         ],
       },
       {
-        labelKey: "marchesFinanciers.stabiliteFinanciere.title",
-        href: "/marches-financiers/stabilite-financiere",
+        labelKey: "procedures.penal.title",
+        href: `${sectionPaths.procedures}/penal`,
         links: [
-          { labelKey: "marchesFinanciers.stabiliteFinanciere.rapport", href: "/marches-financiers/stabilite-financiere/rapport-de-stabilite-financiere" },
-          { labelKey: "marchesFinanciers.stabiliteFinanciere.risques", href: "/marches-financiers/stabilite-financiere/risques-systemiques" },
-          { labelKey: "marchesFinanciers.stabiliteFinanciere.vulnerabilites", href: "/marches-financiers/stabilite-financiere/vulnerabilites" },
-          { labelKey: "marchesFinanciers.stabiliteFinanciere.indicateurs", href: "/marches-financiers/stabilite-financiere/indicateurs" },
+          { labelKey: "procedures.penal.plainte", href: `${sectionPaths.procedures}/penal/plainte` },
+          { labelKey: "procedures.penal.enquete", href: `${sectionPaths.procedures}/penal/enquete` },
+          { labelKey: "procedures.penal.procesPenal", href: `${sectionPaths.procedures}/penal/proces-penal` },
+          { labelKey: "procedures.penal.droitsDesVictimes", href: `${sectionPaths.procedures}/penal/droits-des-victimes` },
         ],
       },
       {
-        labelKey: "marchesFinanciers.regulation.title",
-        href: "/marches-financiers/regulation",
+        labelKey: "procedures.administratif.title",
+        href: `${sectionPaths.procedures}/administratif`,
         links: [
-          { labelKey: "marchesFinanciers.regulation.reglementation", href: "/marches-financiers/regulation/reglementation-des-marches" },
-          { labelKey: "marchesFinanciers.regulation.supervision", href: "/marches-financiers/regulation/supervision-des-marches" },
-          { labelKey: "marchesFinanciers.regulation.amsf", href: "/marches-financiers/regulation/competences-de-l-amsf" },
-          { labelKey: "marchesFinanciers.regulation.consommateurs", href: "/marches-financiers/regulation/protection-des-investisseurs" },
+          { labelKey: "procedures.administratif.recoursAdministratif", href: `${sectionPaths.procedures}/administratif/recours-administratif` },
+          { labelKey: "procedures.administratif.recoursJuridictionnel", href: `${sectionPaths.procedures}/administratif/recours-juridictionnel` },
+          { labelKey: "procedures.administratif.contentieuxAdministratif", href: `${sectionPaths.procedures}/administratif/contentieux-administratif` },
+          { labelKey: "procedures.administratif.executionDesDecisions", href: `${sectionPaths.procedures}/administratif/execution-des-decisions` },
         ],
       },
       {
-        labelKey: "marchesFinanciers.donneesStatistiques.title",
-        href: "/marches-financiers/donnees-et-statistiques",
+        labelKey: "procedures.demarches.title",
+        href: `${sectionPaths.procedures}/demarches`,
         links: [
-          { labelKey: "marchesFinanciers.donneesStatistiques.statistiques", href: "/marches-financiers/donnees-et-statistiques/statistiques-financieres" },
-          { labelKey: "marchesFinanciers.donneesStatistiques.indicateurs", href: "/marches-financiers/donnees-et-statistiques/indicateurs-financiers" },
-          { labelKey: "marchesFinanciers.donneesStatistiques.publications", href: "/marches-financiers/donnees-et-statistiques/publications" },
-          { labelKey: "marchesFinanciers.donneesStatistiques.donneesOuvertes", href: "/marches-financiers/donnees-et-statistiques/donnees-ouvertes" },
+          { labelKey: "procedures.demarches.deposerUneDemande", href: `${sectionPaths.procedures}/demarches/deposer-une-demande` },
+          { labelKey: "procedures.demarches.consulterUnFormulaire", href: `${sectionPaths.procedures}/demarches/consulter-un-formulaire` },
+          { labelKey: "procedures.demarches.suivreUneProcedure", href: `${sectionPaths.procedures}/demarches/suivre-une-procedure` },
+          { labelKey: "procedures.demarches.obtenirUnDocument", href: `${sectionPaths.procedures}/demarches/obtenir-un-document` },
         ],
       },
     ],
   },
   {
     type: "megaMenu",
-    labelKey: "paiements",
-    href: sectionPaths.paiements,
+    labelKey: "professionnels",
+    href: sectionPaths.professionnels,
     leader: {
-      titleKey: "paiements.title",
-      paragraphKey: "paiements.text",
-      link: { labelKey: "paiements.allLink", href: sectionPaths.paiements },
+      titleKey: "professionnels.title",
+      paragraphKey: "professionnels.text",
+      link: { labelKey: "professionnels.allLink", href: sectionPaths.professionnels },
     },
     primaryItems: [
       {
-        labelKey: "paiements.systemesDePaiement.title",
-        href: "/paiements/systemes-de-paiement",
+        labelKey: "professionnels.magistrature.title",
+        href: `${sectionPaths.professionnels}/magistrature`,
         links: [
-          { labelKey: "paiements.systemesDePaiement.nationaux", href: "/paiements/systemes-de-paiement/systemes-nationaux" },
-          { labelKey: "paiements.systemesDePaiement.fonctionnement", href: "/paiements/systemes-de-paiement/fonctionnement" },
-          { labelKey: "paiements.systemesDePaiement.infrastructuresCritiques", href: "/paiements/systemes-de-paiement/infrastructures-critiques" },
-          { labelKey: "paiements.systemesDePaiement.surveillance", href: "/paiements/systemes-de-paiement/surveillance" },
+          { labelKey: "professionnels.magistrature.magistrats", href: `${sectionPaths.professionnels}/magistrature/magistrats` },
+          { labelKey: "professionnels.magistrature.parquet", href: `${sectionPaths.professionnels}/magistrature/parquet` },
+          { labelKey: "professionnels.magistrature.statut", href: `${sectionPaths.professionnels}/magistrature/statut` },
+          { labelKey: "professionnels.magistrature.deontologie", href: `${sectionPaths.professionnels}/magistrature/deontologie` },
         ],
       },
       {
-        labelKey: "paiements.paiementsInterbancaires.title",
-        href: "/paiements/paiements-interbancaires",
+        labelKey: "professionnels.auxiliairesDeJustice.title",
+        href: `${sectionPaths.professionnels}/auxiliaires-de-justice`,
         links: [
-          { labelKey: "paiements.paiementsInterbancaires.systeme", href: "/paiements/paiements-interbancaires/systeme-interbancaire" },
-          { labelKey: "paiements.paiementsInterbancaires.participants", href: "/paiements/paiements-interbancaires/participants" },
-          { labelKey: "paiements.paiementsInterbancaires.transactions", href: "/paiements/paiements-interbancaires/transactions" },
-          { labelKey: "paiements.paiementsInterbancaires.deroulement", href: "/paiements/paiements-interbancaires/deroulement-d-un-paiement" },
+          { labelKey: "professionnels.auxiliairesDeJustice.avocats", href: `${sectionPaths.professionnels}/auxiliaires-de-justice/avocats` },
+          { labelKey: "professionnels.auxiliairesDeJustice.greffiers", href: `${sectionPaths.professionnels}/auxiliaires-de-justice/greffiers` },
+          { labelKey: "professionnels.auxiliairesDeJustice.notaires", href: `${sectionPaths.professionnels}/auxiliaires-de-justice/notaires` },
+          { labelKey: "professionnels.auxiliairesDeJustice.expertsJudiciaires", href: `${sectionPaths.professionnels}/auxiliaires-de-justice/experts-judiciaires` },
         ],
       },
       {
-        labelKey: "paiements.reglement.title",
-        href: "/paiements/reglement",
+        labelKey: "professionnels.carrieres.title",
+        href: `${sectionPaths.professionnels}/carrieres`,
         links: [
-          { labelKey: "paiements.reglement.reglementDesTransactions", href: "/paiements/reglement/reglement-des-transactions" },
-          { labelKey: "paiements.reglement.compensation", href: "/paiements/reglement/compensation" },
-          { labelKey: "paiements.reglement.monnaieCentrale", href: "/paiements/reglement/reglement-en-monnaie-centrale" },
-          { labelKey: "paiements.reglement.finalite", href: "/paiements/reglement/finalite-du-reglement" },
+          { labelKey: "professionnels.carrieres.emplois", href: `${sectionPaths.professionnels}/carrieres/emplois` },
+          { labelKey: "professionnels.carrieres.concours", href: `${sectionPaths.professionnels}/carrieres/concours` },
+          { labelKey: "professionnels.carrieres.recrutement", href: `${sectionPaths.professionnels}/carrieres/recrutement` },
+          { labelKey: "professionnels.carrieres.mobilite", href: `${sectionPaths.professionnels}/carrieres/mobilite` },
         ],
       },
       {
-        labelKey: "paiements.innovationFinanciere.title",
-        href: "/paiements/innovation-financiere",
+        labelKey: "professionnels.formation.title",
+        href: `${sectionPaths.professionnels}/formation`,
         links: [
-          { labelKey: "paiements.innovationFinanciere.standards", href: "/paiements/innovation-financiere/standards-de-paiement" },
-          { labelKey: "paiements.innovationFinanciere.innovation", href: "/paiements/innovation-financiere/innovation-financiere" },
-          { labelKey: "paiements.innovationFinanciere.monnaieNumerique", href: "/paiements/innovation-financiere/monnaie-numerique-de-banque-centrale" },
-          { labelKey: "paiements.innovationFinanciere.moyens", href: "/paiements/innovation-financiere/moyens-de-paiement" },
+          { labelKey: "professionnels.formation.formationJudiciaire", href: `${sectionPaths.professionnels}/formation/formation-judiciaire` },
+          { labelKey: "professionnels.formation.formationContinue", href: `${sectionPaths.professionnels}/formation/formation-continue` },
+          { labelKey: "professionnels.formation.ecoleDeLaMagistrature", href: `${sectionPaths.professionnels}/formation/ecole-de-la-magistrature` },
+          { labelKey: "professionnels.formation.ressourcesProfessionnelles", href: `${sectionPaths.professionnels}/formation/ressources-professionnelles` },
         ],
       },
     ],
   },
   {
     type: "megaMenu",
-    labelKey: "systemeFinancier",
-    href: sectionPaths.systemeFinancier,
+    labelKey: "donneesRessources",
+    href: sectionPaths.donneesRessources,
     leader: {
-      titleKey: "systemeFinancier.title",
-      paragraphKey: "systemeFinancier.text",
-      link: { labelKey: "systemeFinancier.allLink", href: sectionPaths.systemeFinancier },
+      titleKey: "donneesRessources.title",
+      paragraphKey: "donneesRessources.text",
+      link: { labelKey: "donneesRessources.allLink", href: sectionPaths.donneesRessources },
     },
     primaryItems: [
       {
-        labelKey: "systemeFinancier.liquidite.title",
-        href: "/systeme-financier/liquidite",
+        labelKey: "donneesRessources.decisions.title",
+        href: `${sectionPaths.donneesRessources}/decisions`,
         links: [
-          { labelKey: "systemeFinancier.liquidite.liquiditeDuSysteme", href: "/systeme-financier/liquidite/liquidite-du-systeme-bancaire" },
-          { labelKey: "systemeFinancier.liquidite.operations", href: "/systeme-financier/liquidite/operations-de-liquidite" },
-          { labelKey: "systemeFinancier.liquidite.facilites", href: "/systeme-financier/liquidite/facilites-permanentes" },
-          { labelKey: "systemeFinancier.liquidite.prisesEnPension", href: "/systeme-financier/liquidite/prises-en-pension" },
+          { labelKey: "donneesRessources.decisions.decisionsJudiciaires", href: `${sectionPaths.donneesRessources}/decisions/decisions-judiciaires` },
+          { labelKey: "donneesRessources.decisions.decisionsConstitutionnelles", href: `${sectionPaths.donneesRessources}/decisions/decisions-constitutionnelles` },
+          { labelKey: "donneesRessources.decisions.decisionsAdministratives", href: `${sectionPaths.donneesRessources}/decisions/decisions-administratives` },
+          { labelKey: "donneesRessources.decisions.rechercheDeDecisions", href: `${sectionPaths.donneesRessources}/decisions/recherche-de-decisions` },
         ],
       },
       {
-        labelKey: "systemeFinancier.reserves.title",
-        href: "/systeme-financier/reserves",
+        labelKey: "donneesRessources.statistiques.title",
+        href: `${sectionPaths.donneesRessources}/statistiques`,
         links: [
-          { labelKey: "systemeFinancier.reserves.reservesObligatoires", href: "/systeme-financier/reserves/reserves-obligatoires" },
-          { labelKey: "systemeFinancier.reserves.reservesDeChange", href: "/systeme-financier/reserves/reserves-de-change" },
-          { labelKey: "systemeFinancier.reserves.gestion", href: "/systeme-financier/reserves/gestion-des-reserves" },
-          { labelKey: "systemeFinancier.reserves.comptes", href: "/systeme-financier/reserves/comptes-de-reserves" },
+          { labelKey: "donneesRessources.statistiques.activiteJudiciaire", href: `${sectionPaths.donneesRessources}/statistiques/activite-judiciaire` },
+          { labelKey: "donneesRessources.statistiques.justicePenale", href: `${sectionPaths.donneesRessources}/statistiques/justice-penale` },
+          { labelKey: "donneesRessources.statistiques.justiceCivile", href: `${sectionPaths.donneesRessources}/statistiques/justice-civile` },
+          { labelKey: "donneesRessources.statistiques.statistiquesAnnuelles", href: `${sectionPaths.donneesRessources}/statistiques/statistiques-annuelles` },
         ],
       },
       {
-        labelKey: "systemeFinancier.infrastructureFinanciere.title",
-        href: "/systeme-financier/infrastructure-financiere",
+        labelKey: "donneesRessources.publications.title",
+        href: `${sectionPaths.donneesRessources}/publications`,
         links: [
-          { labelKey: "systemeFinancier.infrastructureFinanciere.infrastructures", href: "/systeme-financier/infrastructure-financiere/infrastructures-financieres" },
-          { labelKey: "systemeFinancier.infrastructureFinanciere.continuite", href: "/systeme-financier/infrastructure-financiere/continuite-des-services" },
-          { labelKey: "systemeFinancier.infrastructureFinanciere.resilience", href: "/systeme-financier/infrastructure-financiere/resilience" },
-          { labelKey: "systemeFinancier.infrastructureFinanciere.securite", href: "/systeme-financier/infrastructure-financiere/securite-des-infrastructures" },
+          { labelKey: "donneesRessources.publications.rapports", href: `${sectionPaths.donneesRessources}/publications/rapports` },
+          { labelKey: "donneesRessources.publications.etudes", href: `${sectionPaths.donneesRessources}/publications/etudes` },
+          { labelKey: "donneesRessources.publications.guides", href: `${sectionPaths.donneesRessources}/publications/guides` },
+          { labelKey: "donneesRessources.publications.archives", href: `${sectionPaths.donneesRessources}/publications/archives` },
         ],
       },
       {
-        labelKey: "systemeFinancier.stabiliteSystemique.title",
-        href: "/systeme-financier/stabilite-systemique",
+        labelKey: "donneesRessources.donneesOuvertes.title",
+        href: `${sectionPaths.donneesRessources}/donnees-ouvertes`,
         links: [
-          { labelKey: "systemeFinancier.stabiliteSystemique.risquesSystemiques", href: "/systeme-financier/stabilite-systemique/risques-systemiques" },
-          { labelKey: "systemeFinancier.stabiliteSystemique.mecanismes", href: "/systeme-financier/stabilite-systemique/mecanismes-de-crise" },
-          { labelKey: "systemeFinancier.stabiliteSystemique.prevention", href: "/systeme-financier/stabilite-systemique/prevention-des-risques" },
-          { labelKey: "systemeFinancier.stabiliteSystemique.coordination", href: "/systeme-financier/stabilite-systemique/coordination" },
+          { labelKey: "donneesRessources.donneesOuvertes.jeuxDeDonnees", href: `${sectionPaths.donneesRessources}/donnees-ouvertes/jeux-de-donnees` },
+          { labelKey: "donneesRessources.donneesOuvertes.api", href: `${sectionPaths.donneesRessources}/donnees-ouvertes/api` },
+          { labelKey: "donneesRessources.donneesOuvertes.reutilisation", href: `${sectionPaths.donneesRessources}/donnees-ouvertes/reutilisation` },
+          { labelKey: "donneesRessources.donneesOuvertes.documentation", href: `${sectionPaths.donneesRessources}/donnees-ouvertes/documentation` },
         ],
       },
     ],
   },
   {
     type: "megaMenu",
-    labelKey: "banqueCentrale",
-    href: sectionPaths.banqueCentrale,
+    labelKey: "leMinistere",
+    href: sectionPaths.leMinistere,
     leader: {
-      titleKey: "banqueCentrale.title",
-      paragraphKey: "banqueCentrale.text",
-      link: { labelKey: "banqueCentrale.allLink", href: sectionPaths.banqueCentrale },
+      titleKey: "leMinistere.title",
+      paragraphKey: "leMinistere.text",
+      link: { labelKey: "leMinistere.allLink", href: sectionPaths.leMinistere },
     },
     primaryItems: [
       {
-        labelKey: "banqueCentrale.presentation.title",
-        href: "/la-banque-centrale/presentation",
+        labelKey: "leMinistere.institution.title",
+        href: `${sectionPaths.leMinistere}/institution`,
         links: [
-          { labelKey: "banqueCentrale.presentation.missions", href: "/la-banque-centrale/presentation/missions" },
-          { labelKey: "banqueCentrale.presentation.independance", href: "/la-banque-centrale/presentation/independance" },
-          { labelKey: "banqueCentrale.presentation.historique", href: "/la-banque-centrale/presentation/historique" },
-          { labelKey: "banqueCentrale.presentation.roleDansLaRepublique", href: "/la-banque-centrale/presentation/role-dans-la-republique" },
+          { labelKey: "leMinistere.institution.leMinistre", href: `${sectionPaths.leMinistere}/institution/le-ministre` },
+          { labelKey: "leMinistere.institution.missions", href: `${sectionPaths.leMinistere}/institution/missions` },
+          { labelKey: "leMinistere.institution.organisation", href: `${sectionPaths.leMinistere}/institution/organisation` },
+          { labelKey: "leMinistere.institution.organigramme", href: `${sectionPaths.leMinistere}/institution/organigramme` },
         ],
       },
       {
-        labelKey: "banqueCentrale.gouvernance.title",
-        href: "/la-banque-centrale/gouvernance",
+        labelKey: "leMinistere.administration.title",
+        href: `${sectionPaths.leMinistere}/administration`,
         links: [
-          { labelKey: "banqueCentrale.gouvernance.gouverneur", href: "/la-banque-centrale/gouvernance/gouverneur" },
-          { labelKey: "banqueCentrale.gouvernance.conseil", href: "/la-banque-centrale/gouvernance/conseil-de-la-bca" },
-          { labelKey: "banqueCentrale.gouvernance.politiqueDeGouvernance", href: "/la-banque-centrale/gouvernance/politique-de-gouvernance" },
-          { labelKey: "banqueCentrale.gouvernance.transparence", href: "/la-banque-centrale/gouvernance/transparence" },
+          { labelKey: "leMinistere.administration.servicesDuMinistere", href: `${sectionPaths.leMinistere}/administration/services-du-ministere` },
+          { labelKey: "leMinistere.administration.administrationJudiciaire", href: `${sectionPaths.leMinistere}/administration/administration-judiciaire` },
+          { labelKey: "leMinistere.administration.budget", href: `${sectionPaths.leMinistere}/administration/budget` },
+          { labelKey: "leMinistere.administration.marchesPublics", href: `${sectionPaths.leMinistere}/administration/marches-publics` },
         ],
       },
       {
-        labelKey: "banqueCentrale.organisation.title",
-        href: "/la-banque-centrale/organisation",
+        labelKey: "leMinistere.transparence.title",
+        href: `${sectionPaths.leMinistere}/transparence`,
         links: [
-          { labelKey: "banqueCentrale.organisation.organigramme", href: "/la-banque-centrale/organisation/organigramme" },
-          { labelKey: "banqueCentrale.organisation.directions", href: "/la-banque-centrale/organisation/directions" },
-          { labelKey: "banqueCentrale.organisation.implantations", href: "/la-banque-centrale/organisation/implantations" },
-          { labelKey: "banqueCentrale.organisation.relationsInstitutionnelles", href: "/la-banque-centrale/organisation/relations-institutionnelles" },
+          { labelKey: "leMinistere.transparence.budgetEtFinances", href: `${sectionPaths.leMinistere}/transparence/budget-et-finances` },
+          { labelKey: "leMinistere.transparence.donneesPubliques", href: `${sectionPaths.leMinistere}/transparence/donnees-publiques` },
+          { labelKey: "leMinistere.transparence.rapportsDActivite", href: `${sectionPaths.leMinistere}/transparence/rapports-d-activite` },
+          { labelKey: "leMinistere.transparence.deontologie", href: `${sectionPaths.leMinistere}/transparence/deontologie` },
         ],
       },
       {
-        labelKey: "banqueCentrale.carrieres.title",
-        href: "/la-banque-centrale/carrieres",
+        labelKey: "leMinistere.actualitesEtContact.title",
+        href: `${sectionPaths.leMinistere}/actualites-et-contact`,
         links: [
-          { labelKey: "banqueCentrale.carrieres.travailler", href: "/la-banque-centrale/carrieres/travailler-a-la-bca" },
-          { labelKey: "banqueCentrale.carrieres.metiers", href: "/la-banque-centrale/carrieres/metiers" },
-          { labelKey: "banqueCentrale.carrieres.recrutement", href: "/la-banque-centrale/carrieres/recrutement" },
-          { labelKey: "banqueCentrale.carrieres.concours", href: "/la-banque-centrale/carrieres/concours-et-candidatures" },
+          { labelKey: "leMinistere.actualitesEtContact.actualites", href: `${sectionPaths.leMinistere}/actualites-et-contact/actualites` },
+          { labelKey: "leMinistere.actualitesEtContact.communiques", href: `${sectionPaths.leMinistere}/actualites-et-contact/communiques` },
+          { labelKey: "leMinistere.actualitesEtContact.agenda", href: `${sectionPaths.leMinistere}/actualites-et-contact/agenda` },
+          { labelKey: "leMinistere.actualitesEtContact.contact", href: `${sectionPaths.leMinistere}/actualites-et-contact/contact` },
         ],
       },
     ],
   },
 ];
 
+assertNavigationStructureValid();
+
 /**
  * Secondary navigation zone of the site footer, distinct from the main
  * navigation of the header. It mirrors the seven entries of the header
- * navigation and derives its links from the themes of each section — so the
+ * navigation and derives its links from the sections of each theme — so the
  * footer and the header can never drift apart.
  *
  * Column titles resolve under `footer.columns`, links under `nav.panel`.

@@ -1,4 +1,4 @@
-module github.com/codegouvaor/bce
+module github.com/codegouvaor/justice
 
 go 1.25.5
 
