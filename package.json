@@ -1,7 +1,7 @@
 {
-  "name": "bce-gouv",
+  "name": "justice-gouv",
   "version": "1.0.0",
-  "description": "The digital platform of the Central Bank of Astoria.",
+  "description": "The official digital platform of the Ministry of Justice of Astoria.",
   "private": true,
   "type": "module",
   "workspaces": [
@@ -68,7 +68,7 @@
   "packageManager": "pnpm@8.15.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/codegouvaor/bce.git"
+    "url": "https://github.com/codegouvaor/justice.git"
   },
   "keywords": [
     "news",
@@ -80,14 +80,14 @@
   ],
   "author": {
     "name": "Astoria Government Development Team",
-    "email": "developer@bce.astoria-gouv.org",
-    "url": "https://bce.astoria-gouv.org"
+    "email": "developer@justice.gouv.aor",
+    "url": "https://justice.gouv.aor"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codegouvaor/bce/issues"
+    "url": "https://github.com/codegouvaor/justice/issues"
   },
-  "homepage": "https://github.com/codegouvaor/bce#readme",
+  "homepage": "https://github.com/codegouvaor/justice#readme",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix --quiet",
